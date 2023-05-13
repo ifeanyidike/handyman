@@ -2,7 +2,7 @@
 
 Download Expo Go on your mobile device.
 
-Then navigate to the mobile home cd mobile/app.
+Then navigate to the mobile home `cd mobile/app`.
 Run `yarn install` or just `yarn`
 
 Then run `expo start` or `npx expo start`
