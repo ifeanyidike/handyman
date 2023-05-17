@@ -6,5 +6,6 @@ export const defaultContainer = {
   width,
   height,
   paddingTop: 30,
+  fontFamily: 'Urbanist_800ExtraBold',
   backgroundColor: colors.backgroundColor,
 };

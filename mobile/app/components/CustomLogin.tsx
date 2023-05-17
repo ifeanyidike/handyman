@@ -3,7 +3,7 @@ import React from 'react';
 import { Item } from '../types/basic';
 import { colors } from '../utils/generalUtils';
 
-const { width, height } = Dimensions.get('screen');
+const { width } = Dimensions.get('screen');
 const CustomLogin = ({ img, text }: Item) => {
   return (
     <View style={styles.container}>
@@ -29,5 +29,6 @@ const styles = StyleSheet.create({
   },
   text: {
     marginLeft: 10,
+    fontFamily: 'Urbanist_600SemiBold',
   },
 });

@@ -5,12 +5,13 @@ import { colors } from '../utils/generalUtils';
 interface Props {
   text: string;
   call: string;
+  onPress: () => void;
 }
-const AuthCall = ({ text, call }: Props) => {
+const AuthCall = ({ text, call, onPress }: Props) => {
   return (
     <View style={styles.signupCall}>
       <Text style={styles.signUpCallText}>{text}</Text>
-      <Pressable style={styles.signUpCallAction}>
+      <Pressable style={styles.signUpCallAction} onPress={onPress}>
         <Text style={styles.callText}>{call}</Text>
       </Pressable>
     </View>
@@ -30,10 +31,12 @@ const styles = StyleSheet.create({
   },
   signUpCallText: {
     color: colors.faintText,
+    fontFamily: 'Urbanist_400Regular',
   },
   signUpCallAction: {},
   callText: {
     color: colors.buttonPrimaryColor,
     fontWeight: '500',
+    fontFamily: 'Urbanist_500Medium',
   },
 });

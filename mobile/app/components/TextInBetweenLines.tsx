@@ -32,6 +32,6 @@ const styles = StyleSheet.create({
     backgroundColor: colors.backgroundColor,
     paddingHorizontal: 10,
     color: colors.faintText,
-    fontWeight: '600',
+    fontFamily: 'Urbanist_500Medium',
   },
 });

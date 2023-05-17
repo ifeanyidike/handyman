@@ -2,7 +2,9 @@ import { StyleSheet, Dimensions } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Onboarding from './screens/Onboarding';
-import Auth from './screens/Auth';
+import AuthHome from './screens/AuthHome';
+import SignUp from './screens/SignUp';
+import Login from './screens/LogIn';
 
 const Stack = createNativeStackNavigator();
 const { width, height } = Dimensions.get('screen');
@@ -15,7 +17,9 @@ export default function App() {
         }}
       >
         <Stack.Screen name="Home" component={Onboarding} />
-        <Stack.Screen name="Auth" component={Auth} />
+        <Stack.Screen name="AuthHome" component={AuthHome} />
+        <Stack.Screen name="SignUp" component={SignUp} />
+        <Stack.Screen name="LogIn" component={Login} />
       </Stack.Navigator>
     </NavigationContainer>
   );

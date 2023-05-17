@@ -27,3 +27,15 @@ export const customLoginData = [
     text: 'Continue with Apple',
   },
 ];
+
+export const authIcons = [
+  {
+    img: require('../assets/fb.png'),
+  },
+  {
+    img: require('../assets/google.png'),
+  },
+  {
+    img: require('../assets/apple.png'),
+  },
+];
