@@ -16,7 +16,7 @@ const FlashScreen = () => {
       <Image source={require('../assets/logo.png')} resizeMode="contain" />
 
       <View style={styles.indicator}>
-        <ActivityIndicator size="large" color="#00ff00" />
+        <ActivityIndicator size="large" color={colors.indicatorLoader} />
       </View>
     </View>
   );

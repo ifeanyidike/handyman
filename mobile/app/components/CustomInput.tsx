@@ -3,15 +3,16 @@ import React from 'react';
 import { colors } from '../utils/generalUtils';
 
 interface Props {
-  Icon: any;
+  Icon?: any;
   SuffixIcon?: any;
   showPassword?: any;
   placeholder: string;
+  value?: string;
 }
 
 const { width } = Dimensions.get('screen');
-const InputWithIcon = (props: Props) => {
-  const { Icon, SuffixIcon, placeholder, showPassword } = props;
+const CustomInput = (props: Props) => {
+  const { Icon, SuffixIcon, placeholder, showPassword, value } = props;
 
   return (
     <View style={styles.section}>
@@ -21,14 +22,15 @@ const InputWithIcon = (props: Props) => {
         style={styles.input}
         onChangeText={() => {}}
         underlineColorAndroid="transparent"
-        placeholder={placeholder}
+        placeholder={placeholder || ''}
+        value={value || ''}
       ></TextInput>
       {SuffixIcon}
     </View>
   );
 };
 
-export default InputWithIcon;
+export default CustomInput;
 
 const styles = StyleSheet.create({
   section: {
@@ -53,7 +55,6 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
     paddingLeft: 10,
     color: '#424242',
-    letterSpacing: 1.2,
     fontFamily: 'Urbanist_500Medium',
   },
 });

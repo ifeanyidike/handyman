@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import * as LocalAuthentication from 'expo-local-authentication';
+import { biometricAuthenticate } from '../utils/authUtils';
 
 const useBiometric = () => {
   const [isBiometricSupported, setIsBiometricSupported] = useState(false);
@@ -17,18 +18,11 @@ const useBiometric = () => {
     if (!isBiometricSupported) return;
 
     (async () => {
-      const savedBiometrics = await LocalAuthentication.isEnrolledAsync();
-      setIsBiometricSaved(!!savedBiometrics);
-      if (!savedBiometrics) return;
+      const authResult = await biometricAuthenticate();
+      const { savedBiometrics, isAuthenticated } = authResult;
 
-      const authenticate = await LocalAuthentication.authenticateAsync({
-        promptMessage: 'Login with Biometrics',
-        disableDeviceFallback: false,
-        cancelLabel: 'Cancel',
-        fallbackLabel: 'Fallback',
-        requireConfirmation: true,
-      });
-      setIsAuthenticated(authenticate.success);
+      if (!savedBiometrics) return;
+      setIsAuthenticated(isAuthenticated);
     })();
   }, [isBiometricSupported]);
 

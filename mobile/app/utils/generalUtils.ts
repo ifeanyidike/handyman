@@ -1,5 +1,6 @@
 export const colors = {
   buttonPrimaryColor: '#7210FF',
+  buttonSecondaryColor: '#F1E7FF',
   lineFaintColor: '#EEEEEE',
   lineFainterColor: '#EFEFEF',
   faintText: '#A2A2A2',
@@ -8,4 +9,8 @@ export const colors = {
   nearWhite: '#FAFAFA',
   nearWhiteAlt: '#F6F6F6',
   nearAsh: '#424242',
+  black: '#000000',
+  indicatorLoader: '#00ff00',
+  tabMainColor: '#9E9E9E',
+  dim: '#F5F5F5',
 };

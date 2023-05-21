@@ -2,7 +2,7 @@ import { Dimensions, StyleSheet, Text, View } from 'react-native';
 import React, { useCallback, useEffect, useState } from 'react';
 import FlashScreen from '../components/FlashScreen';
 import Slider from '../components/Slider';
-import HeroButton from '../components/HeroButton';
+import Button from '../components/Button';
 import { sliderData } from '../utils/pagesUtils';
 
 import * as SplashScreen from 'expo-splash-screen';
@@ -34,10 +34,7 @@ const Onboarding = ({ navigation }: Navigation) => {
       ) : (
         <View style={styles.container} onLayout={onLayoutRootView}>
           <Slider data={sliderData} />
-          <HeroButton
-            onPress={() => navigation.navigate('AuthHome')}
-            text="Next"
-          />
+          <Button onPress={() => navigation.navigate('AuthHome')} text="Next" />
         </View>
       )}
     </SafeAreaView>

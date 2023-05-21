@@ -6,9 +6,9 @@ import { defaultContainer } from '../styles/general';
 import BackButton from '../components/BackButton';
 import { Navigation } from '../types/basic';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import InputWithIcon from '../components/InputWithIcon';
+import CustomInput from '../components/CustomInput';
 import CheckBox from '../components/CheckBox';
-import HeroButton from '../components/HeroButton';
+import Button from '../components/Button';
 import TextInBetweenLines from '../components/TextInBetweenLines';
 import AuthIconsList from '../components/AuthIconsList';
 import AuthCall from '../components/AuthCall';
@@ -22,11 +22,11 @@ const SignUp = ({ navigation }: Navigation) => {
         <BackButton navigation={navigation} />
         <Text style={styles.title}>Create your Account</Text>
         <View style={styles.inputGroup}>
-          <InputWithIcon
+          <CustomInput
             Icon={<MaterialIcons name="email" size={20} />}
             placeholder="Email"
           />
-          <InputWithIcon
+          <CustomInput
             Icon={<MaterialIcons name="lock" size={20} />}
             showPassword={showPassword}
             SuffixIcon={
@@ -45,7 +45,7 @@ const SignUp = ({ navigation }: Navigation) => {
           <CheckBox isChecked={isChecked} toggleCheck={toggleCheck} />
           <Text>Remember me</Text>
         </View>
-        <HeroButton onPress={() => {}} text="Sign up" />
+        <Button onPress={() => navigation.navigate('Profile')} text="Sign up" />
 
         <View>
           <TextInBetweenLines text="or continue with" />

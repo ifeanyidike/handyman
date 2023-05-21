@@ -6,7 +6,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import CustomLogin from '../components/CustomLogin';
 import { customLoginData } from '../utils/pagesUtils';
 import TextInBetweenLines from '../components/TextInBetweenLines';
-import HeroButton from '../components/HeroButton';
+import Button from '../components/Button';
 import AuthCall from '../components/AuthCall';
 import BackButton from '../components/BackButton';
 import { defaultContainer } from '../styles/general';
@@ -21,8 +21,8 @@ const AuthHome = ({ navigation }: Navigation) => {
   // }, []);
   // const isAuthenticated = useBiometricSignUp('ifeanyidike87@gmail.com');
   // console.log('isAuthenticated', isAuthenticated);
-  const email = useBiometricAuthorization();
-  console.log('email', email);
+  // const email = useBiometricAuthorization();
+  // console.log('email', email);
 
   return (
     <SafeAreaView>
@@ -41,7 +41,7 @@ const AuthHome = ({ navigation }: Navigation) => {
           />
         </View>
         <TextInBetweenLines text="or" />
-        <HeroButton
+        <Button
           onPress={() => navigation.navigate('LogIn')}
           text="Sign in with password"
         />
