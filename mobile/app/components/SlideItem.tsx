@@ -12,10 +12,11 @@ import type { Item } from '../types/basic';
 
 interface Props {
   item: Item;
+  customImageStyle: any;
 }
 const { width, height } = Dimensions.get('screen');
 
-const SlideItem = ({ item }: Props) => {
+const SlideItem = ({ item, customImageStyle = {} }: Props) => {
   const translateYImage = new Animated.Value(40);
 
   Animated.timing(translateYImage, {
@@ -32,6 +33,7 @@ const SlideItem = ({ item }: Props) => {
         style={[
           styles.image,
           {
+            ...customImageStyle,
             transform: [
               {
                 translateY: translateYImage,
@@ -40,9 +42,11 @@ const SlideItem = ({ item }: Props) => {
           },
         ]}
       />
-      <View style={styles.content}>
-        <Text style={styles.title}>{item.text}</Text>
-      </View>
+      {item.text && (
+        <View style={styles.content}>
+          <Text style={styles.title}>{item.text}</Text>
+        </View>
+      )}
     </View>
   );
 };

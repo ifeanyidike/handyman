@@ -1,7 +1,7 @@
 import { NavigationScreenProp } from 'react-native';
 export interface Item {
   img: number;
-  text: string;
+  text?: string;
 }
 
 export interface Navigation {

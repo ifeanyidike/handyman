@@ -13,13 +13,14 @@ import Pagination from './Pagination';
 
 interface Props {
   data: Item[];
+  customImageStyle?: any;
 }
 
 interface ViewableItemsChanged {
   viewableItems: ViewToken[];
 }
 
-const Slider = ({ data }: Props) => {
+const Slider = ({ data, customImageStyle }: Props) => {
   const scrollX = useRef(new Animated.Value(0)).current;
   const [index, setIndex] = useState(0);
 
@@ -42,7 +43,9 @@ const Slider = ({ data }: Props) => {
 
   const handleOnViewableItemsChanged = useRef(
     ({ viewableItems }: ViewableItemsChanged) => {
-      const index = viewableItems[0].index;
+      const firstViewable = viewableItems[0];
+      let index = null;
+      if (firstViewable) index = firstViewable.index;
       if (index !== null) setIndex(index);
     }
   ).current;
@@ -54,7 +57,9 @@ const Slider = ({ data }: Props) => {
     <View>
       <FlatList
         data={data}
-        renderItem={({ item }) => <SlideItem item={item} />}
+        renderItem={({ item }) => (
+          <SlideItem customImageStyle={customImageStyle} item={item} />
+        )}
         horizontal
         pagingEnabled
         snapToAlignment="center"

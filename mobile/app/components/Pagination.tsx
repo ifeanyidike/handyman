@@ -1,6 +1,7 @@
 import { Animated, Dimensions, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import { Item } from '../types/basic';
+import { colors } from '../utils/generalUtils';
 
 interface Props {
   data: Item[];
@@ -58,6 +59,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#ccc',
   },
   dotActive: {
-    backgroundColor: '#000',
+    backgroundColor: colors.buttonPrimaryColor,
   },
 });

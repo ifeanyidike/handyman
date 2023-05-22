@@ -39,3 +39,21 @@ export const authIcons = [
     img: require('../assets/apple.png'),
   },
 ];
+
+export const promoSliderData = [
+  {
+    img: require('../assets/promodiscount2.png'),
+  },
+  {
+    img: require('../assets/promodiscount3.png'),
+  },
+  {
+    img: require('../assets/promodiscount3.png'),
+  },
+  {
+    img: require('../assets/promodiscount4.png'),
+  },
+  {
+    img: require('../assets/promodiscount5.png'),
+  },
+];
