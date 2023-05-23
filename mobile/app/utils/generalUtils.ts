@@ -13,4 +13,6 @@ export const colors = {
   indicatorLoader: '#00ff00',
   tabMainColor: '#9E9E9E',
   dim: '#F5F5F5',
+  gold: '#FB9400',
+  grayScale: '#616161',
 };

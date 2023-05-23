@@ -47,8 +47,4 @@ const styles = StyleSheet.create({
   container: {
     ...defaultContainer,
   },
-  hero: {
-    width: 450,
-    height: 450,
-  },
 });

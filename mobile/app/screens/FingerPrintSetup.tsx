@@ -47,7 +47,9 @@ const FingerPrintSetup = ({ navigation }: Navigation) => {
 
   useEffect(() => {
     if (!finishModalOpen) return;
+
     const timer = setTimeout(() => {
+      toggleFinishModal(false);
       navigation.navigate('Main');
     }, 2000);
 

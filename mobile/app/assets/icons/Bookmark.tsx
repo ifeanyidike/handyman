@@ -9,7 +9,7 @@ type Props = {
 const Bookmark = ({ strokeColor = '#212121', fillColor = 'none' }: Props) => {
   return (
     <View style={styles.container}>
-      <Svg width="28" height="28" viewBox="0 0 28 28" fill={fillColor}>
+      <Svg width="28" height="28" viewBox="0 0 28 28">
         <Path
           d="M9.96582 10.754H17.9633"
           stroke={strokeColor}

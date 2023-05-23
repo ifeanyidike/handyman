@@ -1,5 +1,5 @@
-import { Alert, FlatList, Image, StyleSheet, Text, View } from 'react-native';
-import React, { useState, useEffect } from 'react';
+import { FlatList, Image, StyleSheet, Text, View } from 'react-native';
+import React from 'react';
 
 import { Navigation } from '../types/basic';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -10,20 +10,8 @@ import Button from '../components/Button';
 import AuthCall from '../components/AuthCall';
 import BackButton from '../components/BackButton';
 import { defaultContainer } from '../styles/general';
-import useBiometricSignUp from '../hooks/useBiometricSignUp';
-import useBiometricAuthorization from '../hooks/useBiometricAuthorization';
 
 const AuthHome = ({ navigation }: Navigation) => {
-  // useEffect(() => {
-  //   (async () => {
-  //     await handleBiometricAuth();
-  //   })();
-  // }, []);
-  // const isAuthenticated = useBiometricSignUp('ifeanyidike87@gmail.com');
-  // console.log('isAuthenticated', isAuthenticated);
-  // const email = useBiometricAuthorization();
-  // console.log('email', email);
-
   return (
     <SafeAreaView>
       <View style={styles.container}>

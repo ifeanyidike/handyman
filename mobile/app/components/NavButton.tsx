@@ -1,14 +1,27 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import { colors } from '../utils/generalUtils';
 
+type Nav = {
+  index: number;
+};
 type Props = {
   hasBackground?: boolean;
   isSmall?: boolean;
   text: string;
+  isClicked?: boolean;
+  index?: number;
+  toggleNavClicked?: (e: Nav) => void;
 };
 const NavButton = (props: Props) => {
-  const { hasBackground, isSmall, text } = props;
+  const { hasBackground, isSmall, text, toggleNavClicked, index = 0 } = props;
+
+  const handlePress = () => {
+    if (toggleNavClicked) {
+      toggleNavClicked({ index });
+    }
+  };
+
   return (
     <TouchableOpacity
       style={[
@@ -16,6 +29,7 @@ const NavButton = (props: Props) => {
         hasBackground && { backgroundColor: colors.buttonPrimaryColor },
         isSmall && { width: 60 },
       ]}
+      onPress={handlePress}
     >
       <Text
         style={[

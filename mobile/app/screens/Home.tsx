@@ -7,7 +7,7 @@ import {
   ScrollView,
   FlatList,
 } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { defaultContainer } from '../styles/general';
 import Notification from '../assets/icons/Notification';
@@ -28,6 +28,8 @@ import Plumbing from '../assets/icons/plumbing';
 import Shifting from '../assets/icons/shifting';
 import More from '../assets/icons/more';
 import NavButton from '../components/NavButton';
+import ServiceCard from '../components/ServiceCard';
+import HrLine from '../components/HrLine';
 
 const navButtonsArray = [
   'All',
@@ -39,11 +41,49 @@ const navButtonsArray = [
   'Plumbing',
   'Shifting',
 ];
+
+const cardEntries = [
+  {
+    Icon: require('../assets/card_image1.png'),
+    userName: 'Kylee Danford',
+    serviceName: 'House Cleaning',
+    serviceCost: '$25',
+    averageRating: 4.8,
+    numReviews: 8289,
+  },
+  {
+    Icon: require('../assets/card_image2.png'),
+    userName: 'Alfonzo Schuessler',
+    serviceName: 'Floor Cleaning',
+    serviceCost: '$20',
+    averageRating: 4.9,
+    numReviews: 6182,
+  },
+  {
+    Icon: require('../assets/card_image3.png'),
+    userName: 'Sanjuanita Ordonez',
+    serviceName: 'Washing Clothes',
+    serviceCost: '$22',
+    averageRating: 4.7,
+    numReviews: 7938,
+  },
+  {
+    Icon: require('../assets/card_image4.png'),
+    userName: 'Freida Varnes',
+    serviceName: 'Bathroom Cleaning',
+    serviceCost: '$24',
+    averageRating: 4.9,
+    numReviews: 6182,
+  },
+];
 const Home = () => {
   const customImageStyle = {
     flex: 0,
     width: '95%',
   };
+  const [navClicked, toggleNavClicked] = useState({
+    index: 0,
+  });
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <ScrollView style={styles.container}>
@@ -61,8 +101,12 @@ const Home = () => {
             </View>
           </View>
           <View style={styles.rightHeader}>
-            <Notification />
-            <Bookmark />
+            <TouchableOpacity>
+              <Notification />
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <Bookmark />
+            </TouchableOpacity>
           </View>
         </View>
         <View style={styles.searchBox}>
@@ -123,21 +167,34 @@ const Home = () => {
           </View>
         </View>
 
+        <HrLine space={30} />
+
         <View style={styles.popularServices}>
           <SectionTitle caption="Most Popular Services" action="See All" />
           <FlatList
             style={{ marginVertical: 20 }}
             data={navButtonsArray}
-            renderItem={({ item }) => {
-              if (item === 'All')
-                return <NavButton hasBackground isSmall text="All" />;
-              return <NavButton text={item} />;
+            renderItem={({ item, index }) => {
+              return (
+                <NavButton
+                  hasBackground={index === navClicked.index}
+                  index={index}
+                  isSmall={index === 0}
+                  text={item}
+                  toggleNavClicked={toggleNavClicked}
+                />
+              );
             }}
             horizontal
-            pagingEnabled
             snapToAlignment="center"
             showsHorizontalScrollIndicator={false}
           />
+
+          <View style={styles.cards}>
+            {cardEntries.map((items, index) => (
+              <ServiceCard key={index} {...items} index={index} />
+            ))}
+          </View>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -203,7 +260,9 @@ const styles = StyleSheet.create({
   serviceItem: {
     alignItems: 'center',
   },
-  popularServices: {
-    marginTop: 30,
+  popularServices: {},
+  cards: {
+    marginTop: 10,
+    marginBottom: 20,
   },
 });
