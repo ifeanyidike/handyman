@@ -92,15 +92,15 @@ const Home = () => {
             </TouchableOpacity>
             <TouchableOpacity style={styles.serviceItem}>
               <Repairing />
-              <Text>Cleaning</Text>
+              <Text>Repairing</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.serviceItem}>
               <Painting />
-              <Text>Cleaning</Text>
+              <Text>Painting</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.serviceItem}>
               <Laundry />
-              <Text>Cleaning</Text>
+              <Text>Laundry</Text>
             </TouchableOpacity>
           </View>
           <View style={styles.serviceItems}>
