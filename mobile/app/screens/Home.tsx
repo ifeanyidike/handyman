@@ -30,6 +30,7 @@ import More from '../assets/icons/more';
 import NavButton from '../components/NavButton';
 import ServiceCard from '../components/ServiceCard';
 import HrLine from '../components/HrLine';
+import { Navigation } from '../types/basic';
 
 const navButtonsArray = [
   'All',
@@ -76,7 +77,7 @@ const cardEntries = [
     numReviews: 6182,
   },
 ];
-const Home = () => {
+const Home = ({ navigation }: Navigation) => {
   const customImageStyle = {
     flex: 0,
     width: '95%',
@@ -84,6 +85,7 @@ const Home = () => {
   const [navClicked, toggleNavClicked] = useState({
     index: 0,
   });
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <ScrollView style={styles.container}>
@@ -101,7 +103,9 @@ const Home = () => {
             </View>
           </View>
           <View style={styles.rightHeader}>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('Notifications')}
+            >
               <Notification />
             </TouchableOpacity>
             <TouchableOpacity>
