@@ -15,7 +15,7 @@ import Bookmark from '../assets/icons/Bookmark';
 import CustomInput from '../components/CustomInput';
 import Search from '../assets/icons/Search';
 import Filter from '../assets/icons/Filter';
-import { colors } from '../utils/generalUtils';
+import { colors, servicesList, testServices } from '../utils/generalUtils';
 import Slider from '../components/Slider';
 import { promoSliderData } from '../utils/pagesUtils';
 import SectionTitle from '../components/SectionTitle';
@@ -32,51 +32,6 @@ import ServiceCard from '../components/ServiceCard';
 import HrLine from '../components/HrLine';
 import { Navigation } from '../types/basic';
 
-const navButtonsArray = [
-  'All',
-  'Cleaning',
-  'Repairing',
-  'Painting',
-  'Laundry',
-  'Appliance',
-  'Plumbing',
-  'Shifting',
-];
-
-const cardEntries = [
-  {
-    Icon: require('../assets/card_image1.png'),
-    userName: 'Kylee Danford',
-    serviceName: 'House Cleaning',
-    serviceCost: '$25',
-    averageRating: 4.8,
-    numReviews: 8289,
-  },
-  {
-    Icon: require('../assets/card_image2.png'),
-    userName: 'Alfonzo Schuessler',
-    serviceName: 'Floor Cleaning',
-    serviceCost: '$20',
-    averageRating: 4.9,
-    numReviews: 6182,
-  },
-  {
-    Icon: require('../assets/card_image3.png'),
-    userName: 'Sanjuanita Ordonez',
-    serviceName: 'Washing Clothes',
-    serviceCost: '$22',
-    averageRating: 4.7,
-    numReviews: 7938,
-  },
-  {
-    Icon: require('../assets/card_image4.png'),
-    userName: 'Freida Varnes',
-    serviceName: 'Bathroom Cleaning',
-    serviceCost: '$24',
-    averageRating: 4.9,
-    numReviews: 6182,
-  },
-];
 const Home = ({ navigation }: Navigation) => {
   const customImageStyle = {
     flex: 0,
@@ -108,7 +63,7 @@ const Home = ({ navigation }: Navigation) => {
             >
               <Notification />
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('Bookmarks')}>
               <Bookmark />
             </TouchableOpacity>
           </View>
@@ -177,7 +132,7 @@ const Home = ({ navigation }: Navigation) => {
           <SectionTitle caption="Most Popular Services" action="See All" />
           <FlatList
             style={{ marginVertical: 20 }}
-            data={navButtonsArray}
+            data={servicesList}
             renderItem={({ item, index }) => {
               return (
                 <NavButton
@@ -195,7 +150,7 @@ const Home = ({ navigation }: Navigation) => {
           />
 
           <View style={styles.cards}>
-            {cardEntries.map((items, index) => (
+            {testServices.map((items, index) => (
               <ServiceCard key={index} {...items} index={index} />
             ))}
           </View>

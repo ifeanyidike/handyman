@@ -9,6 +9,7 @@ import Profile from '../screens/Profile';
 import FingerPrintSetup from '../screens/FingerPrintSetup';
 import Main from './Main';
 import NotificationsPane from '../screens/NotificationsPane';
+import Bookmarks from '../screens/Bookmarks';
 
 const Stack = createNativeStackNavigator();
 const Entry = () => {
@@ -27,6 +28,7 @@ const Entry = () => {
         <Stack.Screen name="FingerPrintSetup" component={FingerPrintSetup} />
         <Stack.Screen name="Main" component={Main} />
         <Stack.Screen name="Notifications" component={NotificationsPane} />
+        <Stack.Screen name="Bookmarks" component={Bookmarks} />
       </Stack.Navigator>
     </NavigationContainer>
   );
