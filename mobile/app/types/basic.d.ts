@@ -7,3 +7,12 @@ export interface Item {
 export interface Navigation {
   navigation: NavigationScreenProp<any, any>;
 }
+
+export type CardItem = {
+  Icon: number;
+  userName: string;
+  serviceName: string;
+  serviceCost: string;
+  averageRating: number;
+  numReviews: number;
+};

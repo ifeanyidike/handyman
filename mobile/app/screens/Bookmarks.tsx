@@ -1,17 +1,31 @@
-import { FlatList, ScrollView, StyleSheet, Text, View } from 'react-native';
+import {
+  Dimensions,
+  FlatList,
+  GestureResponderEvent,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 import React, { useState } from 'react';
 import { defaultContainer } from '../styles/general';
 import BackButton from '../components/BackButton';
-import { Navigation } from '../types/basic';
+import { CardItem, Navigation } from '../types/basic';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { servicesList, testServices } from '../utils/generalUtils';
+import { colors, servicesList, testServices } from '../utils/generalUtils';
 import NavButton from '../components/NavButton';
 import ServiceCard from '../components/ServiceCard';
+import Dialog from '../components/Dialog';
+import Button from '../components/Button';
 
+const { width } = Dimensions.get('screen');
 const Bookmarks = ({ navigation }: Navigation) => {
   const [navClicked, toggleNavClicked] = useState({
     index: 0,
   });
+  const customButtonWidth = width / 2 - 20;
+  const [modelItem, toggleBookmarkModal] = useState<CardItem | undefined>();
+
   return (
     <SafeAreaView>
       <View style={[styles.container]}>
@@ -37,12 +51,45 @@ const Bookmarks = ({ navigation }: Navigation) => {
           />
 
           <View style={styles.cards}>
-            {testServices.map((items, index) => (
-              <ServiceCard key={index} {...items} index={index} />
+            {testServices.map((item, index) => (
+              <ServiceCard
+                key={index}
+                item={item}
+                isBookmarked
+                index={index}
+                toggleBookmarkModal={toggleBookmarkModal}
+              />
             ))}
           </View>
           <View style={{ height: 50 }}></View>
         </ScrollView>
+
+        {modelItem && (
+          <Dialog
+            modalOpen={!!modelItem}
+            fullWidth={true}
+            flatBottom={true}
+            pinToBottom={true}
+            grayBackground={true}
+          >
+            <Text style={styles.modalTitle}>Remove from Bookmark?</Text>
+            <ServiceCard item={modelItem} noShadow isBookmarked />
+            <View style={styles.buttonGroup}>
+              <Button
+                onPress={() => toggleBookmarkModal(undefined)}
+                text="Cancel"
+                backgroundColor={colors.buttonSecondaryColor}
+                textColor={colors.buttonPrimaryColor}
+                customWidth={customButtonWidth}
+              />
+              <Button
+                onPress={() => toggleBookmarkModal(undefined)}
+                text="Yes, Remove"
+                customWidth={customButtonWidth}
+              />
+            </View>
+          </Dialog>
+        )}
       </View>
     </SafeAreaView>
   );
@@ -68,5 +115,14 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 20,
     marginRight: 15,
+  },
+  buttonGroup: {
+    flexDirection: 'row',
+    width,
+    justifyContent: 'space-around',
+  },
+  modalTitle: {
+    fontFamily: 'Urbanist_700Bold',
+    fontSize: 20,
   },
 });

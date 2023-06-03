@@ -1,4 +1,10 @@
-import { Dimensions, Pressable, StyleSheet, Text, View } from 'react-native';
+import {
+  Dimensions,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import React from 'react';
 import { colors } from '../utils/generalUtils';
 
@@ -24,7 +30,7 @@ const Button = (props: Props) => {
 
   return (
     <View style={[styles.container, additionalStyle]}>
-      <Pressable
+      <TouchableOpacity
         onPress={onPress}
         style={[
           styles.button,
@@ -35,7 +41,7 @@ const Button = (props: Props) => {
         ]}
       >
         <Text style={[styles.text, { color: textColor }]}>{text}</Text>
-      </Pressable>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -50,6 +56,14 @@ const styles = StyleSheet.create({
   button: {
     padding: 15,
     borderRadius: 50,
+    shadowColor: colors.black,
+    shadowOffset: {
+      width: 2,
+      height: 1,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 5,
+    elevation: 1,
   },
   text: {
     textAlign: 'center',

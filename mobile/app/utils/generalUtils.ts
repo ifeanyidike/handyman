@@ -10,11 +10,13 @@ export const colors = {
   nearWhiteAlt: '#F6F6F6',
   nearAsh: '#424242',
   black: '#000000',
+  nearBlack: '#222222',
   indicatorLoader: '#00ff00',
   tabMainColor: '#9E9E9E',
   dim: '#F5F5F5',
   gold: '#FB9400',
   grayScale: '#616161',
+  transparent: 'transparent',
 };
 
 export const servicesList = [

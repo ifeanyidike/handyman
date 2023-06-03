@@ -1,15 +1,26 @@
 import { StyleSheet, Text, View, Modal, Pressable, Image } from 'react-native';
 import React, { ReactNode } from 'react';
 import { colors } from '../utils/generalUtils';
-import Button from './Button';
 
 type Props = {
   modalOpen: boolean;
   toggleModal?: (e: boolean) => void;
   children?: ReactNode;
+  borderTopRadius?: number;
+  flatBottom?: boolean;
+  fullWidth?: boolean;
+  pinToBottom?: boolean;
+  grayBackground?: boolean;
 };
 const Dialog = (props: Props) => {
-  const { children, modalOpen } = props;
+  const {
+    children,
+    modalOpen,
+    flatBottom,
+    fullWidth,
+    pinToBottom,
+    grayBackground,
+  } = props;
   return (
     <Modal
       animationType="slide"
@@ -17,8 +28,32 @@ const Dialog = (props: Props) => {
       transparent={true}
       onRequestClose={() => {}}
     >
-      <View style={styles.modalContainer}>
-        <View style={styles.modalView}>{children}</View>
+      <View
+        style={[
+          styles.modalContainer,
+          pinToBottom && { justifyContent: 'flex-end' },
+          grayBackground && {
+            backgroundColor: colors.nearBlack,
+            opacity: 0.9,
+          },
+        ]}
+      >
+        <View
+          style={[
+            styles.modalView,
+            flatBottom && {
+              opacity: 1,
+              borderRadius: 50,
+              borderBottomLeftRadius: 0,
+              borderBottomRightRadius: 0,
+            },
+            fullWidth && {
+              margin: 0,
+            },
+          ]}
+        >
+          {children}
+        </View>
       </View>
     </Modal>
   );

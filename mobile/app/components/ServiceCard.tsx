@@ -12,41 +12,51 @@ import { FontAwesome } from '@expo/vector-icons';
 import { colors } from '../utils/generalUtils';
 import Bookmark from '../assets/icons/Bookmark';
 import BookmarkAlt from '../assets/icons/BookmarkAlt';
+import type { CardItem } from '../types/basic';
 
 type Props = {
-  Icon: number;
-  userName: string;
-  serviceName: string;
-  serviceCost: string;
-  averageRating: number;
-  numReviews: number;
-  index: number;
+  item: CardItem;
+  index?: number;
+  isBookmarked?: boolean;
+  noShadow?: boolean;
+  toggleBookmarkModal?: (e: CardItem) => void;
 };
 const ServiceCard = (props: Props) => {
-  const [fillColor, setFillColor] = useState();
-  const [strokeColor, setStrokeColor] = useState(colors.buttonPrimaryColor);
-  const [isToggled, setIsToggled] = useState(false);
+  const { isBookmarked, toggleBookmarkModal, noShadow, item } = props;
+  const [isToggled, setIsToggled] = useState(isBookmarked ?? false);
 
   const handleToggleBookmark = (e: GestureResponderEvent) => {
     e.stopPropagation();
+    if (isBookmarked) return;
     setIsToggled(!isToggled);
   };
 
+  const handlePress = (e: GestureResponderEvent) => {
+    if (!isBookmarked || !toggleBookmarkModal) return;
+    toggleBookmarkModal(item);
+  };
+
   return (
-    <TouchableOpacity style={styles.container}>
-      <Image style={styles.image} source={props.Icon} resizeMode="contain" />
+    <TouchableOpacity
+      style={[
+        styles.container,
+        noShadow && { elevation: 0, backgroundColor: colors.transparent },
+      ]}
+      onPress={handlePress}
+    >
+      <Image style={styles.image} source={item.Icon} resizeMode="contain" />
       <View style={styles.content}>
-        <Text style={styles.tinyGray}>{props.userName}</Text>
-        <Text style={styles.serviceName}>{props.serviceName}</Text>
-        <Text style={styles.serviceCost}>{props.serviceCost}</Text>
+        <Text style={styles.tinyGray}>{item.userName}</Text>
+        <Text style={styles.serviceName}>{item.serviceName}</Text>
+        <Text style={styles.serviceCost}>{item.serviceCost}</Text>
         <View style={styles.review}>
           <FontAwesome name="star-half-o" size={18} color={colors.gold} />
           <Text style={[styles.tinyGray, styles.reviewInfo]}>
-            {props.averageRating}
+            {item.averageRating}
           </Text>
           <Text style={[styles.tinyGray, styles.reviewInfo]}>|</Text>
           <Text style={[styles.tinyGray, styles.reviewInfo]}>
-            {props.numReviews} reviews
+            {item.numReviews} reviews
           </Text>
         </View>
       </View>

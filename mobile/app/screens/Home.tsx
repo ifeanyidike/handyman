@@ -150,8 +150,8 @@ const Home = ({ navigation }: Navigation) => {
           />
 
           <View style={styles.cards}>
-            {testServices.map((items, index) => (
-              <ServiceCard key={index} {...items} index={index} />
+            {testServices.map((item, index) => (
+              <ServiceCard key={index} item={item} index={index} />
             ))}
           </View>
         </View>
