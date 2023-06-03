@@ -51,7 +51,6 @@ const NotificationsPane = ({ navigation }: Navigation) => {
               text="Your account has been created!"
             />
           </View>
-          <View style={{ height: 50 }}></View>
         </ScrollView>
       </View>
     </SafeAreaView>

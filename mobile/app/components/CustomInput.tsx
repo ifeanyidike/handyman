@@ -8,19 +8,23 @@ interface Props {
   showPassword?: any;
   placeholder: string;
   value?: string;
+  setSearchText?: (e: string) => void;
 }
 
 const { width } = Dimensions.get('screen');
 const CustomInput = (props: Props) => {
   const { Icon, SuffixIcon, placeholder, showPassword, value } = props;
-
+  const handleChangeText = (text: string) => {
+    if (!props.setSearchText) return;
+    props.setSearchText(text);
+  };
   return (
     <View style={styles.section}>
       {Icon}
       <TextInput
         secureTextEntry={showPassword !== undefined ? !showPassword : false}
         style={styles.input}
-        onChangeText={() => {}}
+        onChangeText={handleChangeText}
         underlineColorAndroid="transparent"
         placeholder={placeholder || ''}
         value={value || ''}

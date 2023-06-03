@@ -33,6 +33,7 @@ import HrLine from '../components/HrLine';
 import { Navigation } from '../types/basic';
 
 const Home = ({ navigation }: Navigation) => {
+  const [searchText, setSearchText] = useState<string>('');
   const customImageStyle = {
     flex: 0,
     width: '95%',
@@ -40,6 +41,10 @@ const Home = ({ navigation }: Navigation) => {
   const [navClicked, toggleNavClicked] = useState({
     index: 0,
   });
+
+  const handleSpecialOfferPress = () => {
+    navigation.navigate('SpecialOffers');
+  };
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -72,11 +77,21 @@ const Home = ({ navigation }: Navigation) => {
           <CustomInput
             Icon={<Search />}
             placeholder="Search"
+            setSearchText={setSearchText}
             SuffixIcon={<Filter />}
           />
+          {searchText && (
+            <View>
+              <Text>Here is the search text</Text>
+            </View>
+          )}
         </View>
         <View style={styles.offer}>
-          <SectionTitle caption="Special Offer" action="See All" />
+          <SectionTitle
+            caption="Special Offer"
+            onPress={handleSpecialOfferPress}
+            action="See All"
+          />
 
           <View style={styles.offerImage}>
             <Slider
@@ -129,7 +144,11 @@ const Home = ({ navigation }: Navigation) => {
         <HrLine space={30} />
 
         <View style={styles.popularServices}>
-          <SectionTitle caption="Most Popular Services" action="See All" />
+          <SectionTitle
+            caption="Most Popular Services"
+            onPress={() => navigation.navigate('PopularServices')}
+            action="See All"
+          />
           <FlatList
             style={{ marginVertical: 20 }}
             data={servicesList}

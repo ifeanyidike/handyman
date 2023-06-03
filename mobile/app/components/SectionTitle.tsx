@@ -1,20 +1,23 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React from 'react';
 import { colors } from '../utils/generalUtils';
 
 type Props = {
   caption: string;
   action: string;
+  onPress?: () => void;
 };
-const SectionTitle = ({ caption, action }: Props) => {
+const SectionTitle = ({ caption, action, onPress }: Props) => {
   return (
     <View style={styles.sectionTitle}>
       <Text style={[styles.sectionTitleText, styles.sectionTitleCaption]}>
         {caption}
       </Text>
-      <Text style={[styles.sectionTitleText, styles.sectionTitleAction]}>
-        {action}
-      </Text>
+      <TouchableOpacity onPress={onPress}>
+        <Text style={[styles.sectionTitleText, styles.sectionTitleAction]}>
+          {action}
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 };
