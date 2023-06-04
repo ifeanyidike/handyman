@@ -98,7 +98,7 @@ const FingerPrintSetup = ({ navigation }: Navigation) => {
         <Dialog modalOpen={finishModalOpen} toggleModal={toggleFinishModal}>
           <Image source={require('../assets/person-group.png')} />
           <Text style={[styles.modalText, styles.congrats]}>
-            Congradulations!
+            Congratulations!
           </Text>
 
           <Text style={styles.modalText}>

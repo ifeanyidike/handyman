@@ -8,6 +8,24 @@ export interface Navigation {
   navigation: NavigationScreenProp<any, any>;
 }
 
+export type RootStackParamsList = {
+  Onboarding: undefined;
+  AuthHome: undefined;
+  SignUp: undefined;
+  LogIn: undefined;
+  Profile: undefined;
+  FingerPrintSetup: undefined;
+  Main: undefined;
+  Notifications: undefined;
+  Bookmarks: undefined;
+  SpecialOffers: undefined;
+  PopularServices: undefined;
+  AllServices: undefined;
+  ServiceProviders: {
+    serviceKey;
+  };
+};
+
 export type CardItem = {
   Icon: number;
   userName: string;
@@ -15,4 +33,9 @@ export type CardItem = {
   serviceCost: string;
   averageRating: number;
   numReviews: number;
+};
+
+export type SearchTextType = {
+  text: string;
+  count: number;
 };

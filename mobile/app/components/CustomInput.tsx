@@ -1,4 +1,11 @@
-import { StyleSheet, TextInput, View, Dimensions } from 'react-native';
+import {
+  StyleSheet,
+  TextInput,
+  View,
+  Dimensions,
+  NativeSyntheticEvent,
+  TextInputSubmitEditingEventData,
+} from 'react-native';
 import React from 'react';
 import { colors } from '../utils/generalUtils';
 
@@ -9,6 +16,9 @@ interface Props {
   placeholder: string;
   value?: string;
   setSearchText?: (e: string) => void;
+  handleSubmit?: (
+    e: NativeSyntheticEvent<TextInputSubmitEditingEventData>
+  ) => void;
 }
 
 const { width } = Dimensions.get('screen');
@@ -25,6 +35,7 @@ const CustomInput = (props: Props) => {
         secureTextEntry={showPassword !== undefined ? !showPassword : false}
         style={styles.input}
         onChangeText={handleChangeText}
+        onSubmitEditing={props.handleSubmit}
         underlineColorAndroid="transparent"
         placeholder={placeholder || ''}
         value={value || ''}

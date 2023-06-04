@@ -14,17 +14,20 @@ import Pagination from './Pagination';
 interface Props {
   data: Item[];
   customImageStyle?: any;
+  disableAnimation?: boolean;
 }
 
 interface ViewableItemsChanged {
   viewableItems: ViewToken[];
 }
 
-const Slider = ({ data, customImageStyle }: Props) => {
+const Slider = (props: Props) => {
+  const { data, disableAnimation, customImageStyle } = props;
   const scrollX = useRef(new Animated.Value(0)).current;
   const [index, setIndex] = useState(0);
 
   const handleOnScroll = (e: unknown) => {
+    if (disableAnimation) return;
     Animated.event(
       [
         {
@@ -58,7 +61,11 @@ const Slider = ({ data, customImageStyle }: Props) => {
       <FlatList
         data={data}
         renderItem={({ item }) => (
-          <SlideItem customImageStyle={customImageStyle} item={item} />
+          <SlideItem
+            disableAnimation={disableAnimation}
+            customImageStyle={customImageStyle}
+            item={item}
+          />
         )}
         horizontal
         pagingEnabled

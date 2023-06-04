@@ -6,6 +6,8 @@ import {
   View,
   ScrollView,
   FlatList,
+  NativeSyntheticEvent,
+  TextInputSubmitEditingEventData,
 } from 'react-native';
 import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -30,10 +32,13 @@ import More from '../assets/icons/more';
 import NavButton from '../components/NavButton';
 import ServiceCard from '../components/ServiceCard';
 import HrLine from '../components/HrLine';
-import { Navigation } from '../types/basic';
+import { Navigation, SearchTextType } from '../types/basic';
+import SearchBlock from '../components/SearchBlock';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Home = ({ navigation }: Navigation) => {
   const [searchText, setSearchText] = useState<string>('');
+  const [triggerSearch, setTriggerSearch] = useState<number>(0);
   const customImageStyle = {
     flex: 0,
     width: '95%',
@@ -46,9 +51,46 @@ const Home = ({ navigation }: Navigation) => {
     navigation.navigate('SpecialOffers');
   };
 
+  const addSearchItemsToStorage = async (t: string) => {
+    let text = t.trim();
+    text = t.slice(0, 1).toUpperCase() + t.slice(1);
+    const textExists = await AsyncStorage.getItem('@searchItems');
+
+    if (textExists === null) {
+      return await AsyncStorage.setItem(
+        '@searchItems',
+        JSON.stringify([{ text, count: 1 }])
+      );
+    }
+
+    const isValidObject = typeof textExists === 'string' && textExists !== '';
+    if (!isValidObject) return;
+
+    const textObject = JSON.parse(textExists);
+    const textIdx = textObject.findIndex(
+      (e: SearchTextType) => e.text === text
+    );
+
+    if (textIdx < 0) {
+      textObject.push({ text, count: 1 });
+    } else {
+      textObject[textIdx].count += 1;
+    }
+
+    await AsyncStorage.setItem('@searchItems', JSON.stringify(textObject));
+  };
+
+  const handleSearchSubmit = async (
+    e: NativeSyntheticEvent<TextInputSubmitEditingEventData>
+  ) => {
+    const text = e.nativeEvent.text;
+    await addSearchItemsToStorage(text);
+    setTriggerSearch(triggerSearch + 1);
+  };
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <ScrollView style={styles.container}>
+      <View style={styles.topContainer}>
         <View style={styles.topContent}>
           <View style={styles.leftHeader}>
             <Image
@@ -77,15 +119,21 @@ const Home = ({ navigation }: Navigation) => {
           <CustomInput
             Icon={<Search />}
             placeholder="Search"
+            value={searchText}
             setSearchText={setSearchText}
+            handleSubmit={handleSearchSubmit}
             SuffixIcon={<Filter />}
           />
+
           {searchText && (
-            <View>
-              <Text>Here is the search text</Text>
-            </View>
+            <SearchBlock
+              triggerSearch={triggerSearch}
+              setTriggerSearch={setTriggerSearch}
+            />
           )}
         </View>
+      </View>
+      <ScrollView style={styles.container}>
         <View style={styles.offer}>
           <SectionTitle
             caption="Special Offer"
@@ -97,12 +145,17 @@ const Home = ({ navigation }: Navigation) => {
             <Slider
               data={promoSliderData}
               customImageStyle={customImageStyle}
+              disableAnimation={true}
             />
           </View>
         </View>
 
         <View style={styles.services}>
-          <SectionTitle caption="Services" action="See All" />
+          <SectionTitle
+            caption="Services"
+            onPress={() => navigation.navigate('AllServices')}
+            action="See All"
+          />
           <View style={styles.serviceItems}>
             <TouchableOpacity style={styles.serviceItem}>
               <Cleaning />
@@ -186,6 +239,15 @@ const styles = StyleSheet.create({
     ...defaultContainer,
     paddingHorizontal: 10,
   },
+  topContainer: {
+    width: defaultContainer.width,
+    paddingTop: defaultContainer.paddingTop,
+    paddingHorizontal: 10,
+    paddingBottom: 10,
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
+    backgroundColor: defaultContainer.backgroundColor,
+  },
   topContent: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -218,7 +280,6 @@ const styles = StyleSheet.create({
     marginTop: 40,
   },
   offer: {
-    marginTop: 30,
     justifyContent: 'center',
   },
   offerImage: {

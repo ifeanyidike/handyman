@@ -12,8 +12,11 @@ import NotificationsPane from '../screens/NotificationsPane';
 import Bookmarks from '../screens/Bookmarks';
 import SpecialOffersPane from '../screens/SpecialOffersPane';
 import PopularServicesPane from '../screens/PopularServicesPane';
+import ServicesPane from '../screens/ServicesPane';
+import ServiceProvidersList from '../screens/ServiceProvidersList';
+import { RootStackParamsList } from '../types/basic';
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<RootStackParamsList>();
 const Entry = () => {
   return (
     <NavigationContainer>
@@ -33,6 +36,11 @@ const Entry = () => {
         <Stack.Screen name="Bookmarks" component={Bookmarks} />
         <Stack.Screen name="SpecialOffers" component={SpecialOffersPane} />
         <Stack.Screen name="PopularServices" component={PopularServicesPane} />
+        <Stack.Screen name="AllServices" component={ServicesPane} />
+        <Stack.Screen
+          name="ServiceProviders"
+          component={ServiceProvidersList}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

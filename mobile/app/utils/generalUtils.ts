@@ -1,3 +1,5 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 export const colors = {
   buttonPrimaryColor: '#7210FF',
   buttonSecondaryColor: '#F1E7FF',
@@ -64,3 +66,14 @@ export const testServices = [
     numReviews: 6182,
   },
 ];
+
+export const validateStorageObj = async (key: string) => {
+  const textStr = await AsyncStorage.getItem(key);
+
+  if (textStr === null) return;
+  const isValidObject = typeof textStr === 'string' && textStr !== '';
+  if (!isValidObject) return;
+
+  const textObj = JSON.parse(textStr);
+  return textObj;
+};
