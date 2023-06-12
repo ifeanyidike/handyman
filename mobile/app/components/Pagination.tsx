@@ -7,12 +7,14 @@ interface Props {
   data: Item[];
   scrollX: Animated.Value;
   index: number;
+  customPaginationStyle?: any;
 }
 
 const { width } = Dimensions.get('screen');
-const Pagination = ({ data, scrollX, index }: Props) => {
+const Pagination = (props: Props) => {
+  const { data, scrollX, index, customPaginationStyle } = props;
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { ...customPaginationStyle }]}>
       {data.map((_, idx) => {
         const inputRange = [(idx - 1) * width, idx * width, (idx + 1) * width];
         const dotWidth = scrollX.interpolate({

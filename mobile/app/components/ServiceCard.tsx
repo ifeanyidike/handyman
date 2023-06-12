@@ -12,14 +12,20 @@ import { FontAwesome } from '@expo/vector-icons';
 import { colors } from '../utils/generalUtils';
 import Bookmark from '../assets/icons/Bookmark';
 import BookmarkAlt from '../assets/icons/BookmarkAlt';
-import type { CardItem } from '../types/basic';
+import type { CardItem, Navigation, RootStackParamsList } from '../types/basic';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
+type ServiceNavigation = NativeStackNavigationProp<
+  RootStackParamsList,
+  'ServiceProviders'
+>;
 type Props = {
   item: CardItem;
   index?: number;
   isBookmarked?: boolean;
   noShadow?: boolean;
   toggleBookmarkModal?: (e: CardItem) => void;
+  navigation?: ServiceNavigation;
 };
 const ServiceCard = (props: Props) => {
   const { isBookmarked, toggleBookmarkModal, noShadow, item } = props;
@@ -32,6 +38,11 @@ const ServiceCard = (props: Props) => {
   };
 
   const handlePress = (e: GestureResponderEvent) => {
+    if (props.navigation) {
+      props.navigation.navigate('Service', {
+        serviceName: item.serviceName,
+      });
+    }
     if (!isBookmarked || !toggleBookmarkModal) return;
     toggleBookmarkModal(item);
   };

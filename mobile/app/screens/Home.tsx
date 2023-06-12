@@ -17,7 +17,7 @@ import Bookmark from '../assets/icons/Bookmark';
 import CustomInput from '../components/CustomInput';
 import Search from '../assets/icons/Search';
 import Filter from '../assets/icons/Filter';
-import { colors, servicesList, testServices } from '../utils/generalUtils';
+import { allServices, servicesList, testServices } from '../utils/generalUtils';
 import Slider from '../components/Slider';
 import { promoSliderData } from '../utils/pagesUtils';
 import SectionTitle from '../components/SectionTitle';
@@ -32,13 +32,13 @@ import More from '../assets/icons/more';
 import NavButton from '../components/NavButton';
 import ServiceCard from '../components/ServiceCard';
 import HrLine from '../components/HrLine';
-import { Navigation, SearchTextType } from '../types/basic';
+import { Navigation } from '../types/basic';
 import SearchBlock from '../components/SearchBlock';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Home = ({ navigation }: Navigation) => {
   const [searchText, setSearchText] = useState<string>('');
-  const [triggerSearch, setTriggerSearch] = useState<number>(0);
+  const [searchExists, setSearchExists] = useState<boolean>();
+  const [searchItems, setSearchItems] = useState<string[]>(allServices);
   const customImageStyle = {
     flex: 0,
     width: '95%',
@@ -51,41 +51,14 @@ const Home = ({ navigation }: Navigation) => {
     navigation.navigate('SpecialOffers');
   };
 
-  const addSearchItemsToStorage = async (t: string) => {
-    let text = t.trim();
-    text = t.slice(0, 1).toUpperCase() + t.slice(1);
-    const textExists = await AsyncStorage.getItem('@searchItems');
-
-    if (textExists === null) {
-      return await AsyncStorage.setItem(
-        '@searchItems',
-        JSON.stringify([{ text, count: 1 }])
-      );
-    }
-
-    const isValidObject = typeof textExists === 'string' && textExists !== '';
-    if (!isValidObject) return;
-
-    const textObject = JSON.parse(textExists);
-    const textIdx = textObject.findIndex(
-      (e: SearchTextType) => e.text === text
-    );
-
-    if (textIdx < 0) {
-      textObject.push({ text, count: 1 });
-    } else {
-      textObject[textIdx].count += 1;
-    }
-
-    await AsyncStorage.setItem('@searchItems', JSON.stringify(textObject));
-  };
-
-  const handleSearchSubmit = async (
+  const handleSearchSubmit = (
     e: NativeSyntheticEvent<TextInputSubmitEditingEventData>
   ) => {
     const text = e.nativeEvent.text;
-    await addSearchItemsToStorage(text);
-    setTriggerSearch(triggerSearch + 1);
+    const exists = allServices.some(
+      s => s.toLowerCase() === text.trim().toLowerCase()
+    );
+    setSearchExists(exists);
   };
 
   return (
@@ -127,8 +100,10 @@ const Home = ({ navigation }: Navigation) => {
 
           {searchText && (
             <SearchBlock
-              triggerSearch={triggerSearch}
-              setTriggerSearch={setTriggerSearch}
+              searchExists={searchExists}
+              searchItems={searchItems}
+              setSearchItems={setSearchItems}
+              searchText={searchText}
             />
           )}
         </View>

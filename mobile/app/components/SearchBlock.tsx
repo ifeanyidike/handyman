@@ -7,52 +7,38 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Fontisto } from '@expo/vector-icons';
-import { colors, validateStorageObj } from '../utils/generalUtils';
+import { colors } from '../utils/generalUtils';
 import HrLine from './HrLine';
-import { SearchTextType } from '../types/basic';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const { width } = Dimensions.get('screen');
 type Props = {
-  triggerSearch: number;
-  setTriggerSearch: (e: number) => void;
+  searchExists: boolean | undefined;
+  searchText: string;
+  searchItems: string[];
+  setSearchItems: (e: string[]) => void;
 };
-const SearchBlock = ({ triggerSearch, setTriggerSearch }: Props) => {
-  const [items, setItems] = useState<SearchTextType[]>([]);
-
-  useEffect(() => {
-    (async () => {
-      const textObj: SearchTextType[] = await validateStorageObj(
-        '@searchItems'
-      );
-      if (!textObj) return;
-      textObj.sort((a: SearchTextType, b: SearchTextType) => b.count - a.count);
-      setItems(textObj.slice(0, 10));
-    })();
-  }, [triggerSearch]);
+const SearchBlock = (props: Props) => {
+  const { searchText, searchExists, searchItems, setSearchItems } = props;
 
   const handleClearAll = async (e: GestureResponderEvent) => {
-    await AsyncStorage.removeItem('@searchItems');
-    setItems([]);
+    // await AsyncStorage.removeItem('@searchItems');
+    // setItems([]);
+
+    setSearchItems([]);
   };
 
-  const handleRemoveItem = async (item: SearchTextType) => {
-    const textObj: SearchTextType[] = await validateStorageObj('@searchItems');
-    if (!textObj) return;
-    const filteredObj = textObj.filter(
-      (t: SearchTextType) => t.text !== item.text
-    );
-    await AsyncStorage.setItem('@searchItems', JSON.stringify(filteredObj));
-    setItems(filteredObj);
-
-    setTriggerSearch(triggerSearch + 1);
+  const handleRemoveItem = async (item: string) => {
+    const _filteredItems = searchItems.filter(el => el !== item);
+    setSearchItems(_filteredItems);
   };
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.title}>Recent</Text>
+        <Text style={styles.title}>
+          {searchExists === undefined ? 'Recent' : `Result for "${searchText}"`}
+        </Text>
         <TouchableOpacity onPress={handleClearAll}>
           <Text style={styles.clearAll}>Clear All</Text>
         </TouchableOpacity>
@@ -60,10 +46,10 @@ const SearchBlock = ({ triggerSearch, setTriggerSearch }: Props) => {
       <HrLine space={10} />
 
       <FlatList
-        data={items}
+        data={searchItems}
         renderItem={({ item }) => (
           <View style={styles.content}>
-            <Text style={styles.contentText}>{item.text}</Text>
+            <Text style={styles.contentText}>{item}</Text>
             <TouchableOpacity onPress={() => handleRemoveItem(item)}>
               <Fontisto
                 name="close"
@@ -76,22 +62,6 @@ const SearchBlock = ({ triggerSearch, setTriggerSearch }: Props) => {
         snapToAlignment="center"
         showsHorizontalScrollIndicator={false}
       />
-      {/* <View style={styles.content}>
-        <Text style={styles.contentText}>SearchBlock</Text>
-        <Fontisto name="close" size={24} color={colors.buttonPrimaryColor} />
-      </View>
-      <View style={styles.content}>
-        <Text style={styles.contentText}>SearchBlock</Text>
-        <Fontisto name="close" size={24} color={colors.buttonPrimaryColor} />
-      </View>
-      <View style={styles.content}>
-        <Text style={styles.contentText}>SearchBlock</Text>
-        <Fontisto name="close" size={24} color={colors.buttonPrimaryColor} />
-      </View>
-      <View style={styles.content}>
-        <Text style={styles.contentText}>SearchBlock</Text>
-        <Fontisto name="close" size={24} color={colors.buttonPrimaryColor} />
-      </View> */}
     </View>
   );
 };

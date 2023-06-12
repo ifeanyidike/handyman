@@ -34,6 +34,16 @@ const ServiceProvidersList = (props: ServiceProviderProps) => {
   const customButtonWidth = width / 2 - 20;
   const [modelItem, toggleBookmarkModal] = useState<CardItem | undefined>();
 
+  //   const handleCardPress = () => {
+  //     console.log('Service pressed');
+  //     navigation.navigate('Service', {
+
+  //     });
+  //     navigation.navigate('ServiceProviders', {
+  //         serviceKey: 'Cleaning',
+  //       })
+  //   };
+
   return (
     <SafeAreaView>
       <View style={[styles.container]}>
@@ -44,7 +54,12 @@ const ServiceProvidersList = (props: ServiceProviderProps) => {
         <ScrollView style={styles.viewContainer}>
           <View style={styles.cards}>
             {testServices.map((item, index) => (
-              <ServiceCard key={index} item={item} index={index} />
+              <ServiceCard
+                key={index}
+                item={item}
+                index={index}
+                navigation={navigation}
+              />
             ))}
           </View>
           <View style={{ height: 50 }}></View>

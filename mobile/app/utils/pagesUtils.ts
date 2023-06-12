@@ -57,3 +57,29 @@ export const promoSliderData = [
     img: require('../assets/promodiscount5.png'),
   },
 ];
+
+export const recentSearches = [
+  'Motorcycle Repairing',
+  'Painting the Walls',
+  'Water Faucet Repairing',
+  'Window Cleaning',
+  'House Shifting',
+  'Computer Repairing',
+  'Cloth Laundry',
+  'Floor Wash',
+];
+
+export const sampleServiceHeroImages = [
+  {
+    img: require('../assets/temp/service-1.jpg'),
+  },
+  {
+    img: require('../assets/temp/service-2.jpg'),
+  },
+  {
+    img: require('../assets/temp/service-3.jpg'),
+  },
+  {
+    img: require('../assets/temp/service-4.jpg'),
+  },
+];

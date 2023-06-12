@@ -24,6 +24,9 @@ export type RootStackParamsList = {
   ServiceProviders: {
     serviceKey;
   };
+  Service: {
+    serviceName;
+  };
 };
 
 export type CardItem = {

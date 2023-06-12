@@ -15,6 +15,7 @@ import PopularServicesPane from '../screens/PopularServicesPane';
 import ServicesPane from '../screens/ServicesPane';
 import ServiceProvidersList from '../screens/ServiceProvidersList';
 import { RootStackParamsList } from '../types/basic';
+import Service from '../screens/Service';
 
 const Stack = createNativeStackNavigator<RootStackParamsList>();
 const Entry = () => {
@@ -37,6 +38,7 @@ const Entry = () => {
         <Stack.Screen name="SpecialOffers" component={SpecialOffersPane} />
         <Stack.Screen name="PopularServices" component={PopularServicesPane} />
         <Stack.Screen name="AllServices" component={ServicesPane} />
+        <Stack.Screen name="Service" component={Service} />
         <Stack.Screen
           name="ServiceProviders"
           component={ServiceProvidersList}

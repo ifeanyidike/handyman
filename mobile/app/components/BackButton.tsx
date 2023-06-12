@@ -5,11 +5,12 @@ import { Navigation } from '../types/basic';
 
 interface Props extends Navigation {
   title?: string;
+  arrowColor?: string;
 }
-const BackButton = ({ navigation, title }: Props) => {
+const BackButton = ({ navigation, title, arrowColor = 'black' }: Props) => {
   return (
     <Pressable style={styles.nav} onPress={() => navigation.goBack()}>
-      <AntDesign name="arrowleft" size={24} color="black" />
+      <AntDesign name="arrowleft" size={24} color={arrowColor} />
       <Text style={styles.navTitle}>{title}</Text>
     </Pressable>
   );

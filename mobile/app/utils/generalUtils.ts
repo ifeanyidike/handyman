@@ -1,4 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { SearchTextType } from '../types/basic';
 
 export const colors = {
   buttonPrimaryColor: '#7210FF',
@@ -30,6 +31,33 @@ export const servicesList = [
   'Appliance',
   'Plumbing',
   'Shifting',
+];
+
+export const recentSearches = [
+  'Motorcycle Repairing',
+  'Painting the Walls',
+  'Water Faucet Repairing',
+  'Window Cleaning',
+  'House Shifting',
+  'Computer Repairing',
+  'Cloth Laundry',
+  'Floor Wash',
+];
+
+export const allServices = [
+  'Cleaning',
+  'Repairing',
+  'Painting',
+  'Laundry',
+  'Appliance',
+  'Plumbing',
+  'Shifting',
+  'Beauty',
+  'AC Repairs',
+  'Vehicle',
+  'Electronics',
+  'Massage',
+  "Men's Salon",
 ];
 
 export const testServices = [
@@ -77,3 +105,52 @@ export const validateStorageObj = async (key: string) => {
   const textObj = JSON.parse(textStr);
   return textObj;
 };
+
+const addSearchItemsToStorage = async (t: string) => {
+  let text = t.trim();
+  text = t.slice(0, 1).toUpperCase() + t.slice(1);
+  const textExists = await AsyncStorage.getItem('@searchItems');
+
+  if (textExists === null) {
+    return await AsyncStorage.setItem(
+      '@searchItems',
+      JSON.stringify([{ text, count: 1 }])
+    );
+  }
+
+  const isValidObject = typeof textExists === 'string' && textExists !== '';
+  if (!isValidObject) return;
+
+  const textObject = JSON.parse(textExists);
+  const textIdx = textObject.findIndex((e: SearchTextType) => e.text === text);
+
+  if (textIdx < 0) {
+    textObject.push({ text, count: 1 });
+  } else {
+    textObject[textIdx].count += 1;
+  }
+
+  await AsyncStorage.setItem('@searchItems', JSON.stringify(textObject));
+};
+
+const removeSearchItemFromStorage = () => {
+  // const textObj: SearchTextType[] = await validateStorageObj('@searchItems');
+  // if (!textObj) return;
+  // const filteredObj = textObj.filter(
+  //   (t: SearchTextType) => t.text !== item.text
+  // );
+  // await AsyncStorage.setItem('@searchItems', JSON.stringify(filteredObj));
+  // setItems(filteredObj);
+  // setTriggerSearch(triggerSearch + 1);
+};
+
+// useEffect(() => {
+//   (async () => {
+//     const textObj: SearchTextType[] = await validateStorageObj(
+//       '@searchItems'
+//     );
+//     if (!textObj) return;
+//     textObj.sort((a: SearchTextType, b: SearchTextType) => b.count - a.count);
+//     setItems(textObj.slice(0, 10));
+//   })();
+// }, [triggerSearch]);

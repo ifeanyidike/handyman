@@ -1,11 +1,4 @@
-import {
-  Animated,
-  FlatList,
-  StyleSheet,
-  Text,
-  View,
-  ViewToken,
-} from 'react-native';
+import { Animated, FlatList, View, ViewToken } from 'react-native';
 import React, { useRef, useState } from 'react';
 import SlideItem from './SlideItem';
 import { Item } from '../types/basic';
@@ -14,6 +7,8 @@ import Pagination from './Pagination';
 interface Props {
   data: Item[];
   customImageStyle?: any;
+  parentStyle?: any;
+  customPaginationStyle?: any;
   disableAnimation?: boolean;
 }
 
@@ -22,7 +17,7 @@ interface ViewableItemsChanged {
 }
 
 const Slider = (props: Props) => {
-  const { data, disableAnimation, customImageStyle } = props;
+  const { data, disableAnimation, customImageStyle, parentStyle } = props;
   const scrollX = useRef(new Animated.Value(0)).current;
   const [index, setIndex] = useState(0);
 
@@ -64,6 +59,7 @@ const Slider = (props: Props) => {
           <SlideItem
             disableAnimation={disableAnimation}
             customImageStyle={customImageStyle}
+            parentStyle={parentStyle}
             item={item}
           />
         )}
@@ -75,11 +71,14 @@ const Slider = (props: Props) => {
         onViewableItemsChanged={handleOnViewableItemsChanged}
         viewabilityConfig={viewabilityConfig}
       />
-      <Pagination data={data} scrollX={scrollX} index={index} />
+      <Pagination
+        data={data}
+        scrollX={scrollX}
+        index={index}
+        customPaginationStyle={props.customPaginationStyle}
+      />
     </View>
   );
 };
 
 export default Slider;
-
-const styles = StyleSheet.create({});
