@@ -132,37 +132,89 @@ const Home = ({ navigation }: Navigation) => {
             action="See All"
           />
           <View style={styles.serviceItems}>
-            <TouchableOpacity style={styles.serviceItem}>
+            <TouchableOpacity
+              style={styles.serviceItem}
+              onPress={() =>
+                navigation.navigate('ServiceProviders', {
+                  serviceKey: 'Cleaning',
+                })
+              }
+            >
               <Cleaning />
               <Text>Cleaning</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.serviceItem}>
+            <TouchableOpacity
+              style={styles.serviceItem}
+              onPress={() =>
+                navigation.navigate('ServiceProviders', {
+                  serviceKey: 'Repairing',
+                })
+              }
+            >
               <Repairing />
               <Text>Repairing</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.serviceItem}>
+            <TouchableOpacity
+              style={styles.serviceItem}
+              onPress={() =>
+                navigation.navigate('ServiceProviders', {
+                  serviceKey: 'Painting',
+                })
+              }
+            >
               <Painting />
               <Text>Painting</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.serviceItem}>
+            <TouchableOpacity
+              style={styles.serviceItem}
+              onPress={() =>
+                navigation.navigate('ServiceProviders', {
+                  serviceKey: 'Laundry',
+                })
+              }
+            >
               <Laundry />
               <Text>Laundry</Text>
             </TouchableOpacity>
           </View>
           <View style={styles.serviceItems}>
-            <TouchableOpacity style={styles.serviceItem}>
+            <TouchableOpacity
+              style={styles.serviceItem}
+              onPress={() =>
+                navigation.navigate('ServiceProviders', {
+                  serviceKey: 'Appliance',
+                })
+              }
+            >
               <Appliance />
               <Text>Appliance</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.serviceItem}>
+            <TouchableOpacity
+              style={styles.serviceItem}
+              onPress={() =>
+                navigation.navigate('ServiceProviders', {
+                  serviceKey: 'Plumbing',
+                })
+              }
+            >
               <Plumbing />
               <Text>Plumbing</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.serviceItem}>
+            <TouchableOpacity
+              style={styles.serviceItem}
+              onPress={() =>
+                navigation.navigate('ServiceProviders', {
+                  serviceKey: 'Shifting',
+                })
+              }
+            >
               <Shifting />
               <Text>Shifting</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.serviceItem}>
+            <TouchableOpacity
+              style={styles.serviceItem}
+              onPress={() => navigation.navigate('AllServices')}
+            >
               <More />
               <Text>More</Text>
             </TouchableOpacity>

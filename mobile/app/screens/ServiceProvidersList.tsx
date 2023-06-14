@@ -1,21 +1,11 @@
-import {
-  Dimensions,
-  FlatList,
-  GestureResponderEvent,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import { Dimensions, ScrollView, StyleSheet, View } from 'react-native';
 import React, { useState } from 'react';
 import { defaultContainer } from '../styles/general';
 import BackButton from '../components/BackButton';
-import { CardItem, Navigation, RootStackParamsList } from '../types/basic';
+import { CardItem, RootStackParamsList } from '../types/basic';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { colors, servicesList, testServices } from '../utils/generalUtils';
-import NavButton from '../components/NavButton';
+import { testServices } from '../utils/generalUtils';
 import ServiceCard from '../components/ServiceCard';
-import { Route } from '@react-navigation/native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import Search from '../assets/icons/Search';
 
@@ -33,16 +23,6 @@ const ServiceProvidersList = (props: ServiceProviderProps) => {
   });
   const customButtonWidth = width / 2 - 20;
   const [modelItem, toggleBookmarkModal] = useState<CardItem | undefined>();
-
-  //   const handleCardPress = () => {
-  //     console.log('Service pressed');
-  //     navigation.navigate('Service', {
-
-  //     });
-  //     navigation.navigate('ServiceProviders', {
-  //         serviceKey: 'Cleaning',
-  //       })
-  //   };
 
   return (
     <SafeAreaView>
