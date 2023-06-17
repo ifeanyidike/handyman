@@ -8,13 +8,23 @@ type Nav = {
 type Props = {
   hasBackground?: boolean;
   isSmall?: boolean;
-  text: string;
+  customWidth?: number;
+  text?: string;
   isClicked?: boolean;
   index?: number;
+  children?: React.ReactNode;
   toggleNavClicked?: (e: Nav) => void;
 };
 const NavButton = (props: Props) => {
-  const { hasBackground, isSmall, text, toggleNavClicked, index = 0 } = props;
+  const {
+    hasBackground,
+    isSmall,
+    customWidth = 0,
+    text,
+    toggleNavClicked,
+    children,
+    index = 0,
+  } = props;
 
   const handlePress = () => {
     if (toggleNavClicked) {
@@ -28,6 +38,7 @@ const NavButton = (props: Props) => {
         styles.container,
         hasBackground && { backgroundColor: colors.buttonPrimaryColor },
         isSmall && { width: 60 },
+        customWidth > 0 && { width: customWidth },
       ]}
       onPress={handlePress}
     >
@@ -37,7 +48,7 @@ const NavButton = (props: Props) => {
           hasBackground && { color: colors.backgroundColor },
         ]}
       >
-        {text}
+        {text || children}
       </Text>
     </TouchableOpacity>
   );

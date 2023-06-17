@@ -3,15 +3,16 @@ import React from 'react';
 import { colors } from '../utils/generalUtils';
 
 type Props = {
-  caption: string;
+  caption?: string;
+  children?: React.ReactNode;
   action: string;
   onPress?: () => void;
 };
-const SectionTitle = ({ caption, action, onPress }: Props) => {
+const SectionTitle = ({ children, caption, action, onPress }: Props) => {
   return (
     <View style={styles.sectionTitle}>
       <Text style={[styles.sectionTitleText, styles.sectionTitleCaption]}>
-        {caption}
+        {caption || children}
       </Text>
       <TouchableOpacity onPress={onPress}>
         <Text style={[styles.sectionTitleText, styles.sectionTitleAction]}>
