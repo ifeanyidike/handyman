@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     height: 60,
     width: width - 20,
     paddingHorizontal: 10,
-    borderRadius: 10,
+    borderRadius: 20,
   },
   icon: {},
   input: {

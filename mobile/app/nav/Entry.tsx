@@ -16,6 +16,7 @@ import ServicesPane from '../screens/ServicesPane';
 import ServiceProvidersList from '../screens/ServiceProvidersList';
 import { RootStackParamsList } from '../types/basic';
 import Service from '../screens/Service';
+import BookingStart from '../screens/PreBookings/BookingStart';
 
 const Stack = createNativeStackNavigator<RootStackParamsList>();
 const Entry = () => {
@@ -43,6 +44,7 @@ const Entry = () => {
           name="ServiceProviders"
           component={ServiceProvidersList}
         />
+        <Stack.Screen name="BookingStart" component={BookingStart} />
       </Stack.Navigator>
     </NavigationContainer>
   );

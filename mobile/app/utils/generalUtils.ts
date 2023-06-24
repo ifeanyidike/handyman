@@ -154,3 +154,19 @@ const removeSearchItemFromStorage = () => {
 //     setItems(textObj.slice(0, 10));
 //   })();
 // }, [triggerSearch]);
+
+export enum services {
+  cleaning = 'Cleaning',
+  repairing = 'Repairing',
+  painting = 'Painting',
+  laundry = 'Laundry',
+  appliance = 'Appliance',
+  plumbing = 'Plumbing',
+  shifting = 'Shifting',
+  beauty = 'Beauty',
+  acRepair = 'AC Repair',
+  vehicle = 'Vehicle',
+  electronics = 'Electronics',
+  massage = 'Massage',
+  menSalon = "Men's Salon",
+}

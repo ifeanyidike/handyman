@@ -280,19 +280,21 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   person: {
-    width: 60,
-    height: 60,
+    width: 50,
+    height: 50,
     borderRadius: 999,
   },
   leftHeader: {
     flexDirection: 'row',
   },
   greetings: {
+    gap: 5,
     marginLeft: 10,
     justifyContent: 'center',
   },
   rightHeader: {
     flexDirection: 'row',
+    gap: 5,
     width: '20%',
   },
   headerText: {
@@ -305,6 +307,7 @@ const styles = StyleSheet.create({
   },
   searchBox: {
     marginTop: 40,
+    marginBottom: 10,
   },
   offer: {
     justifyContent: 'center',

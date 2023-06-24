@@ -3,35 +3,31 @@ import React from 'react';
 import Button from '../components/Button';
 import { colors } from '../utils/generalUtils';
 const { width } = Dimensions.get('screen');
-type Props = {
-  leftActionBtn: () => void;
-  leftActionText: string;
 
-  rightActionBtn: () => void;
-  rightActionText: string;
+type Action = {
+  text: string;
+  btn: () => void;
+};
+type Props = {
+  leftAction: Action;
+  rightAction: Action;
   customWidth?: number;
 };
 const ButtonGroup = (props: Props) => {
   const customButtonWidth = width / 2 - 20;
-  const {
-    leftActionBtn,
-    leftActionText,
-    rightActionBtn,
-    rightActionText,
-    customWidth = customButtonWidth,
-  } = props;
+  const { leftAction, rightAction, customWidth = customButtonWidth } = props;
   return (
     <View style={styles.buttonGroup}>
       <Button
-        onPress={leftActionBtn}
-        text={leftActionText}
+        onPress={leftAction.btn}
+        text={leftAction.text}
         backgroundColor={colors.buttonSecondaryColor}
         textColor={colors.buttonPrimaryColor}
         customWidth={customWidth}
       />
       <Button
-        onPress={rightActionBtn}
-        text={rightActionText}
+        onPress={rightAction.btn}
+        text={rightAction.text}
         customWidth={customWidth}
       />
     </View>

@@ -26,6 +26,11 @@ export type RootStackParamsList = {
   };
   Service: {
     serviceName;
+    serviceKey;
+  };
+  BookingStart: {
+    serviceName;
+    serviceKey;
   };
 };
 
@@ -33,6 +38,7 @@ export type CardItem = {
   Icon: number;
   userName: string;
   serviceName: string;
+  serviceKey?: string;
   serviceCost: string;
   averageRating: number;
   numReviews: number;

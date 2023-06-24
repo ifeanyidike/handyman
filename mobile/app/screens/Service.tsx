@@ -63,6 +63,15 @@ const Service = (props: ServiceProps) => {
 
   const uris_first = uris.slice(0, 3);
   const uris_last = uris.slice(3);
+
+  const bookNowAction = () => {
+    navigation.navigate('BookingStart', {
+      ...route.params,
+    });
+  };
+
+  const leftAction = { btn: () => {}, text: 'Message' };
+  const rightAction = { btn: bookNowAction, text: 'Book Now' };
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
@@ -203,12 +212,7 @@ const Service = (props: ServiceProps) => {
         </View>
       </ScrollView>
       <View style={styles.actions}>
-        <ButtonGroup
-          leftActionBtn={() => {}}
-          rightActionBtn={() => {}}
-          leftActionText="Message"
-          rightActionText="Book Now"
-        />
+        <ButtonGroup leftAction={leftAction} rightAction={rightAction} />
       </View>
     </SafeAreaView>
   );

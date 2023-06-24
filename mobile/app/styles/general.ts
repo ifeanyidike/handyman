@@ -1,7 +1,7 @@
 import { Dimensions } from 'react-native';
 import { colors } from '../utils/generalUtils';
 const { width, height } = Dimensions.get('window');
-console.log('height', height);
+
 export const defaultContainer = {
   width,
   height,

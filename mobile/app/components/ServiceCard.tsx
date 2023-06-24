@@ -41,6 +41,7 @@ const ServiceCard = (props: Props) => {
     if (props.navigation) {
       props.navigation.navigate('Service', {
         serviceName: item.serviceName,
+        serviceKey: item.serviceKey,
       });
     }
     if (!isBookmarked || !toggleBookmarkModal) return;

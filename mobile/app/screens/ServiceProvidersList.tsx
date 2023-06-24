@@ -33,14 +33,17 @@ const ServiceProvidersList = (props: ServiceProviderProps) => {
         </View>
         <ScrollView style={styles.viewContainer}>
           <View style={styles.cards}>
-            {testServices.map((item, index) => (
-              <ServiceCard
-                key={index}
-                item={item}
-                index={index}
-                navigation={navigation}
-              />
-            ))}
+            {testServices.map((item, index) => {
+              const data = { ...item, serviceKey: route.params.serviceKey };
+              return (
+                <ServiceCard
+                  key={index}
+                  item={data}
+                  index={index}
+                  navigation={navigation}
+                />
+              );
+            })}
           </View>
           <View style={{ height: 50 }}></View>
         </ScrollView>

@@ -20,7 +20,7 @@ export default BackButton;
 
 const styles = StyleSheet.create({
   nav: {
-    marginHorizontal: 25,
+    marginHorizontal: 15,
     flexDirection: 'row',
     alignItems: 'center',
   },
