@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import BackButton from '../../components/BackButton';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamsList } from '../../types/basic';
@@ -9,6 +9,11 @@ import CleaningBookingLanding from '../../components/Prebooking/CleaningBookingL
 import { colors, services } from '../../utils/generalUtils';
 import Button from '../../components/Button';
 import CarRepairsLanding from '../../components/Prebooking/CarRepairsLanding';
+import PaintingLanding from '../../components/Prebooking/PaintingLanding';
+import LaundryLanding from '../../components/Prebooking/LaundryLanding';
+import ApplianceLanding from '../../components/Prebooking/ApplianceLanding';
+import PlumbingLanding from '../../components/Prebooking/PlumbingLanding';
+import HouseShiftingLanding from '../../components/Prebooking/HouseShiftingLanding';
 
 type BookingStartProps = NativeStackScreenProps<
   RootStackParamsList,
@@ -27,11 +32,20 @@ const BookingStart = (props: BookingStartProps) => {
             return <CleaningBookingLanding />;
           case services.repairing:
             return <CarRepairsLanding />;
+          case services.painting:
+            return <PaintingLanding />;
+          case services.laundry:
+            return <LaundryLanding />;
+          case services.appliance:
+            return <ApplianceLanding />;
+          case services.plumbing:
+            return <PlumbingLanding />;
+          case services.shifting:
+            return <HouseShiftingLanding navigation={navigation} />;
           default:
             return null;
         }
       })()}
-      <Button text="Continue" onPress={() => {}} />
     </SafeAreaView>
   );
 };

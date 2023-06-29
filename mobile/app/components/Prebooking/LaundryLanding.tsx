@@ -1,21 +1,15 @@
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import React, { useState } from 'react';
 import { SelectList } from 'react-native-dropdown-select-list';
+import CustomInput from '../CustomInput';
 import Button from '../Button';
 
-const carBrandList = [
-  { key: '1', value: 'Ford F-Series' },
-  { key: '2', value: 'Lexus 350' },
-  { key: '3', value: 'Toyota Camry Spider' },
+const optionList = [
+  { key: '1', value: 'Yes' },
+  { key: '2', value: 'No' },
 ];
 
-const modelList = [
-  { key: '1', value: 'F-450' },
-  { key: '2', value: 'F-350' },
-  { key: '3', value: 'C-230' },
-];
-
-const CarRepairsLanding = () => {
+const LaundryLanding = () => {
   const [brand, setBrand] = useState<string>('');
   const [model, setModel] = useState<string>('');
   const [plateNumber, setPlateNumber] = useState<string>('');
@@ -23,39 +17,40 @@ const CarRepairsLanding = () => {
     <>
       <ScrollView style={styles.container}>
         <Text style={styles.actionText}>
-          Enter the type and series of the car to be repaired.
+          Enter the weight and the service you need.
         </Text>
 
         <View style={styles.content}>
-          <Text style={styles.contentTitle}>Car Brand</Text>
-          <SelectList
-            setSelected={(val: string) => setBrand(val)}
-            data={carBrandList}
-            save="value"
-            fontFamily="Urbanist_400Regular"
-            placeholder="Select brand"
+          <Text style={styles.contentTitle}>Weight Total Clothing</Text>
+          <CustomInput
+            SuffixIcon={
+              <View style={{ marginRight: 10 }}>
+                <Text style={{ fontFamily: 'Urbanist_400Regular' }}>kg</Text>
+              </View>
+            }
+            placeholder="ex. 12"
           />
         </View>
 
         <View style={styles.content}>
-          <Text style={styles.contentTitle}>Series/Model</Text>
+          <Text style={styles.contentTitle}>Ironing Service</Text>
           <SelectList
             setSelected={(val: string) => setModel(val)}
-            data={modelList}
+            data={optionList}
             save="value"
             fontFamily="Urbanist_400Regular"
-            placeholder="Select plate number"
+            placeholder="Need ironing service?"
           />
         </View>
 
         <View style={styles.content}>
-          <Text style={styles.contentTitle}>Plate Number</Text>
+          <Text style={styles.contentTitle}>Fragrance Service</Text>
           <SelectList
             setSelected={(val: string) => setPlateNumber(val)}
-            data={modelList}
+            data={optionList}
             save="value"
             fontFamily="Urbanist_400Regular"
-            placeholder="Select model"
+            placeholder="Need fragrance service?"
           />
         </View>
       </ScrollView>
@@ -64,7 +59,7 @@ const CarRepairsLanding = () => {
   );
 };
 
-export default CarRepairsLanding;
+export default LaundryLanding;
 
 const styles = StyleSheet.create({
   container: {

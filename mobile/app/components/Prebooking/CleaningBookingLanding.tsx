@@ -9,6 +9,7 @@ import React, { Dispatch, SetStateAction, useState } from 'react';
 import { colors } from '../../utils/generalUtils';
 import MinusIcon from '../../assets/icons/MinusIcon';
 import PlusIcon from '../../assets/icons/PlusIcon';
+import Button from '../Button';
 
 enum CleaningEnum {
   livingRoom = 'Living Room',
@@ -32,26 +33,29 @@ const CleaningBookingLanding = () => {
   }));
   const [cleaningTypes, setCleaningTypes] = useState(_CLEANING_TYPES);
   return (
-    <View style={styles.container}>
-      <Text style={styles.actionText}>
-        Enter the number of items to be cleaned.
-      </Text>
+    <>
+      <View style={styles.container}>
+        <Text style={styles.actionText}>
+          Enter the number of items to be cleaned.
+        </Text>
 
-      <FlatList
-        data={cleaningTypes}
-        renderItem={({ item, index }) => (
-          <CleaningType
-            key={item.text}
-            text={item.text}
-            cleaningTypes={cleaningTypes}
-            setCleaningTypes={setCleaningTypes}
-          />
-        )}
-        snapToAlignment="center"
-        showsVerticalScrollIndicator={true}
-        style={{ flex: 1 }}
-      />
-    </View>
+        <FlatList
+          data={cleaningTypes}
+          renderItem={({ item, index }) => (
+            <CleaningType
+              key={item.text}
+              text={item.text}
+              cleaningTypes={cleaningTypes}
+              setCleaningTypes={setCleaningTypes}
+            />
+          )}
+          snapToAlignment="center"
+          showsVerticalScrollIndicator={true}
+          style={{ flex: 1 }}
+        />
+      </View>
+      <Button text="Continue" onPress={() => {}} />
+    </>
   );
 };
 

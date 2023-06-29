@@ -5,14 +5,39 @@ import { colors } from '../utils/generalUtils';
 
 interface Props {
   isChecked: boolean;
-  toggleCheck: (e: boolean) => void;
+  toggleCheck?: (e: boolean) => void;
+  handleCustomToggle?: () => void;
+  size?: number;
 }
 const CheckBox = (props: Props) => {
-  const { isChecked, toggleCheck } = props;
+  const { isChecked, toggleCheck, handleCustomToggle, size = 26 } = props;
+
+  const handlePress = () => {
+    if (handleCustomToggle) {
+      return handleCustomToggle();
+    }
+    if (toggleCheck) {
+      toggleCheck(!isChecked);
+    }
+  };
+
   return (
-    <Pressable onPress={() => toggleCheck(!isChecked)} style={styles.container}>
+    <Pressable
+      onPress={handlePress}
+      style={[
+        styles.container,
+        {
+          width: size,
+          height: size,
+        },
+      ]}
+    >
       {isChecked && (
-        <FontAwesome name="check" size={21} color={colors.buttonPrimaryColor} />
+        <FontAwesome
+          name="check"
+          size={size - 5}
+          color={colors.buttonPrimaryColor}
+        />
       )}
     </Pressable>
   );
@@ -23,8 +48,6 @@ export default CheckBox;
 const styles = StyleSheet.create({
   container: {
     borderWidth: 2,
-    width: 26,
-    height: 26,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 8,
