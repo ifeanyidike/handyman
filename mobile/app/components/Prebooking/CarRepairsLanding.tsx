@@ -1,36 +1,62 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import React, { useState } from 'react';
-import DropDownPicker from 'react-native-dropdown-picker';
-import { AntDesign } from '@expo/vector-icons';
+import { SelectList } from 'react-native-dropdown-select-list';
 
 const carBrandList = [
-  { label: 'Ford F-Series', value: 'ford-f-series' },
-  { label: 'Lexus 350', value: 'lexus-330' },
-  { label: 'Toyota Camry Spider', value: 'camry-spider' },
+  { key: '1', value: 'Ford F-Series' },
+  { key: '2', value: 'Lexus 350' },
+  { key: '3', value: 'Toyota Camry Spider' },
+];
+
+const modelList = [
+  { key: '1', value: 'F-450' },
+  { key: '2', value: 'F-350' },
+  { key: '3', value: 'C-230' },
 ];
 
 const CarRepairsLanding = () => {
-  const [open, setOpen] = useState(false);
-  const [value, setValue] = useState(null);
-  const [items, setItems] = useState(carBrandList);
+  const [brand, setBrand] = useState<string>('');
+  const [model, setModel] = useState<string>('');
+  const [plateNumber, setPlateNumber] = useState<string>('');
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Text style={styles.actionText}>
         Enter the type and series of the car to be repaired.
       </Text>
 
       <View style={styles.content}>
         <Text style={styles.contentTitle}>Car Brand</Text>
-        <DropDownPicker
-          open={open}
-          value={value}
-          items={items}
-          setOpen={setOpen}
-          setValue={setValue}
-          setItems={setItems}
+        <SelectList
+          setSelected={(val: string) => setBrand(val)}
+          data={carBrandList}
+          save="value"
+          fontFamily="Urbanist_400Regular"
+          placeholder="Select brand"
         />
       </View>
-    </View>
+
+      <View style={styles.content}>
+        <Text style={styles.contentTitle}>Series/Model</Text>
+        <SelectList
+          setSelected={(val: string) => setModel(val)}
+          data={modelList}
+          save="value"
+          fontFamily="Urbanist_400Regular"
+          placeholder="Select plate number"
+        />
+      </View>
+
+      <View style={styles.content}>
+        <Text style={styles.contentTitle}>Plate Number</Text>
+        <SelectList
+          setSelected={(val: string) => setPlateNumber(val)}
+          data={modelList}
+          save="value"
+          fontFamily="Urbanist_400Regular"
+          placeholder="Select model"
+        />
+      </View>
+    </ScrollView>
   );
 };
 
@@ -48,6 +74,7 @@ const styles = StyleSheet.create({
   },
   content: {
     gap: 5,
+    marginBottom: 25,
   },
   contentTitle: {
     fontFamily: 'Urbanist_600SemiBold',
