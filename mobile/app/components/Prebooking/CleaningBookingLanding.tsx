@@ -10,6 +10,8 @@ import { colors } from '../../utils/generalUtils';
 import MinusIcon from '../../assets/icons/MinusIcon';
 import PlusIcon from '../../assets/icons/PlusIcon';
 import Button from '../Button';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamsList } from '../../types/basic';
 
 enum CleaningEnum {
   livingRoom = 'Living Room',
@@ -26,7 +28,16 @@ type CleaningItem = {
   count: number;
 };
 
-const CleaningBookingLanding = () => {
+type BookingStartProps = NativeStackNavigationProp<
+  RootStackParamsList,
+  'BookingStart'
+>;
+type Props = {
+  navigation: BookingStartProps;
+};
+
+const CleaningBookingLanding = (props: Props) => {
+  const { navigation } = props;
   const _CLEANING_TYPES = Object.values(CleaningEnum).map(c => ({
     text: c,
     count: 0,
@@ -54,7 +65,10 @@ const CleaningBookingLanding = () => {
           style={{ flex: 1 }}
         />
       </View>
-      <Button text="Continue" onPress={() => {}} />
+      <Button
+        text="Continue"
+        onPress={() => navigation.navigate('BookingDetails')}
+      />
     </>
   );
 };

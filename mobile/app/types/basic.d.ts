@@ -32,6 +32,7 @@ export type RootStackParamsList = {
     serviceName;
     serviceKey;
   };
+  BookingDetails: undefined;
 };
 
 export type CardItem = {

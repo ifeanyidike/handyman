@@ -1,5 +1,5 @@
-import { StyleSheet, Text, View } from 'react-native';
-import React, { useState } from 'react';
+import { StyleSheet } from 'react-native';
+import React from 'react';
 import BackButton from '../../components/BackButton';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamsList } from '../../types/basic';
@@ -7,7 +7,6 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { defaultContainer } from '../../styles/general';
 import CleaningBookingLanding from '../../components/Prebooking/CleaningBookingLanding';
 import { colors, services } from '../../utils/generalUtils';
-import Button from '../../components/Button';
 import CarRepairsLanding from '../../components/Prebooking/CarRepairsLanding';
 import PaintingLanding from '../../components/Prebooking/PaintingLanding';
 import LaundryLanding from '../../components/Prebooking/LaundryLanding';
@@ -29,7 +28,7 @@ const BookingStart = (props: BookingStartProps) => {
       {(() => {
         switch (serviceKey) {
           case services.cleaning:
-            return <CleaningBookingLanding />;
+            return <CleaningBookingLanding navigation={navigation} />;
           case services.repairing:
             return <CarRepairsLanding />;
           case services.painting:
