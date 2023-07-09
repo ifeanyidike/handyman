@@ -32,7 +32,7 @@ import More from '../assets/icons/more';
 import NavButton from '../components/NavButton';
 import ServiceCard from '../components/ServiceCard';
 import HrLine from '../components/HrLine';
-import { Navigation } from '../types/basic';
+import { Nav, Navigation } from '../types/basic';
 import SearchBlock from '../components/SearchBlock';
 
 const Home = ({ navigation }: Navigation) => {
@@ -43,7 +43,7 @@ const Home = ({ navigation }: Navigation) => {
     flex: 0,
     width: '95%',
   };
-  const [navClicked, toggleNavClicked] = useState({
+  const [navClicked, toggleNavClicked] = useState<Nav>({
     index: 0,
   });
 

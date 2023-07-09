@@ -1,10 +1,8 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React, { useState } from 'react';
 import { colors } from '../utils/generalUtils';
+import { Nav } from '../types/basic';
 
-type Nav = {
-  index: number;
-};
 type Props = {
   hasBackground?: boolean;
   isSmall?: boolean;

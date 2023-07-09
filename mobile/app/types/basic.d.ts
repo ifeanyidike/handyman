@@ -33,6 +33,7 @@ export type RootStackParamsList = {
     serviceKey;
   };
   BookingDetails: undefined;
+  BookingLocation: undefined;
 };
 
 export type CardItem = {
@@ -48,4 +49,8 @@ export type CardItem = {
 export type SearchTextType = {
   text: string;
   count: number;
+};
+
+type Nav = {
+  index: number | null;
 };

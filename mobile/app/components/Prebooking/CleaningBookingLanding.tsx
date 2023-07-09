@@ -1,17 +1,9 @@
-import {
-  FlatList,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import { FlatList, StyleSheet, Text, View } from 'react-native';
 import React, { Dispatch, SetStateAction, useState } from 'react';
-import { colors } from '../../utils/generalUtils';
-import MinusIcon from '../../assets/icons/MinusIcon';
-import PlusIcon from '../../assets/icons/PlusIcon';
 import Button from '../Button';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamsList } from '../../types/basic';
+import ToogleBookingCount from './ToggleBookingCount';
 
 enum CleaningEnum {
   livingRoom = 'Living Room',
@@ -109,18 +101,13 @@ const CleaningType = (props: TypeProps) => {
   };
 
   return (
-    <View style={subStyle.container}>
-      <Text style={subStyle.text}>{text}</Text>
-      <View style={subStyle.action}>
-        <TouchableOpacity onPress={decrementCount}>
-          <MinusIcon size="40" />
-        </TouchableOpacity>
-        <Text style={subStyle.actionText}>{item?.count}</Text>
-        <TouchableOpacity onPress={incrementCount}>
-          <PlusIcon size="40" />
-        </TouchableOpacity>
-      </View>
-    </View>
+    <ToogleBookingCount
+      incrementCount={incrementCount}
+      decrementCount={decrementCount}
+      count={item?.count || 0}
+    >
+      {text}
+    </ToogleBookingCount>
   );
 };
 
@@ -135,30 +122,5 @@ const styles = StyleSheet.create({
     fontFamily: 'Urbanist_400Regular',
     fontSize: 12,
     marginVertical: 20,
-  },
-});
-
-const subStyle = StyleSheet.create({
-  container: {
-    width: '100%',
-    backgroundColor: colors.backgroundColor,
-    flexDirection: 'row',
-    alignItems: 'center',
-    borderRadius: 20,
-    paddingVertical: 10,
-    paddingHorizontal: 15,
-    marginVertical: 15,
-  },
-  text: {
-    fontFamily: 'Urbanist_600SemiBold',
-  },
-  action: {
-    flexDirection: 'row',
-    gap: 15,
-    alignItems: 'center',
-    marginLeft: 'auto',
-  },
-  actionText: {
-    fontFamily: 'Urbanist_600SemiBold',
   },
 });

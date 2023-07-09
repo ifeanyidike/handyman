@@ -17,6 +17,7 @@ interface Props {
   value?: string;
   setSearchText?: (e: string) => void;
   customWidth?: number;
+  height?: number;
   handleSubmit?: (
     e: NativeSyntheticEvent<TextInputSubmitEditingEventData>
   ) => void;
@@ -31,13 +32,19 @@ const CustomInput = (props: Props) => {
     showPassword,
     value,
     customWidth = width - 20,
+    height = 0,
   } = props;
   const handleChangeText = (text: string) => {
     if (!props.setSearchText) return;
     props.setSearchText(text);
   };
   return (
-    <View style={[styles.section, { width: props.customWidth }]}>
+    <View
+      style={[
+        styles.section,
+        { width: props.customWidth, ...(height && { height }) },
+      ]}
+    >
       {Icon}
       <TextInput
         secureTextEntry={showPassword !== undefined ? !showPassword : false}

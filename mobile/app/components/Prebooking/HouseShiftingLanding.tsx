@@ -19,6 +19,7 @@ import {
 import CurrentLoc from '../../assets/icons/CurrentLoc';
 import DestLoc from '../../assets/icons/DestLoc';
 import DottedLine from '../../assets/icons/DottedLine';
+import ToogleBookingCount from './ToggleBookingCount';
 
 enum HouseShiftingEnum {
   table = 'Table',
@@ -160,18 +161,13 @@ const CleaningType = (props: TypeProps) => {
   };
 
   return (
-    <View style={subStyle.container}>
-      <Text style={subStyle.text}>{text}</Text>
-      <View style={subStyle.action}>
-        <TouchableOpacity onPress={decrementCount}>
-          <MinusIcon size="40" />
-        </TouchableOpacity>
-        <Text style={subStyle.actionText}>{item?.count}</Text>
-        <TouchableOpacity onPress={incrementCount}>
-          <PlusIcon size="40" />
-        </TouchableOpacity>
-      </View>
-    </View>
+    <ToogleBookingCount
+      count={item?.count || 0}
+      decrementCount={decrementCount}
+      incrementCount={incrementCount}
+    >
+      {text}
+    </ToogleBookingCount>
   );
 };
 
@@ -190,35 +186,6 @@ const styles = StyleSheet.create({
 });
 
 const subStyle = StyleSheet.create({
-  container: {
-    width: '100%',
-    backgroundColor: colors.backgroundColor,
-    flexDirection: 'row',
-    alignItems: 'center',
-    borderRadius: 20,
-    paddingVertical: 10,
-    paddingHorizontal: 15,
-    marginVertical: 15,
-  },
-  text: {
-    fontFamily: 'Urbanist_600SemiBold',
-  },
-  action: {
-    flexDirection: 'row',
-    gap: 15,
-    alignItems: 'center',
-    marginLeft: 'auto',
-  },
-  actionText: {
-    fontFamily: 'Urbanist_600SemiBold',
-  },
-  content: {
-    gap: 5,
-    marginBottom: 25,
-  },
-  contentTitle: {
-    fontFamily: 'Urbanist_600SemiBold',
-  },
   navigStack: {
     flexDirection: 'row',
     alignItems: 'center',
