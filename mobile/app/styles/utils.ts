@@ -20,5 +20,4 @@ export const MarkerImage = styled.Image`
   width: 35px;
   height: 35px;
   border-radius: 999px;
-  border-width: 2px;
 `;

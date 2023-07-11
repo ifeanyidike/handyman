@@ -9,6 +9,7 @@ import BackButton from '../../components/BackButton';
 import * as Location from 'expo-location';
 import MapView, { Marker } from 'react-native-maps';
 import { MarkerImage } from '../../styles/utils';
+import MarkerImageIcon from '../../assets/icons/MarkerImageIcon';
 
 type BookingDetailsProps = NativeStackScreenProps<
   RootStackParamsList,
@@ -48,6 +49,7 @@ const BookingLocation = (props: BookingDetailsProps) => {
   return (
     <SafeAreaView style={styles.container}>
       <BackButton navigation={navigation} title="Your Address/Location" />
+
       {location?.coords?.latitude && (
         <View style={styles.mapView}>
           <MapView
@@ -55,8 +57,8 @@ const BookingLocation = (props: BookingDetailsProps) => {
             region={{
               latitude: location?.coords?.latitude,
               longitude: location?.coords?.longitude,
-              latitudeDelta: 0.0922,
-              longitudeDelta: 0.0421,
+              latitudeDelta: 0.0932,
+              longitudeDelta: 0.0456,
             }}
           >
             <Marker
@@ -66,15 +68,20 @@ const BookingLocation = (props: BookingDetailsProps) => {
               }}
               title="Ifeanyi Dike"
               description="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi, dolorum!"
-              //   image={require('../../assets/Person.png')}
             >
-              <View style={styles.marker}>
+              <MarkerImageIcon>
                 <MarkerImage
-                  style={styles.markerImage}
+                  style={[
+                    styles.markerImage,
+                    {
+                      marginLeft: 8,
+                      marginTop: 8,
+                    },
+                  ]}
                   resizeMode="contain"
-                  source={require('../../assets/Person.png')}
+                  source={require('../../assets/Person2.png')}
                 />
-              </View>
+              </MarkerImageIcon>
             </Marker>
           </MapView>
         </View>
@@ -100,10 +107,11 @@ const styles = StyleSheet.create({
   },
   marker: {
     backgroundColor: colors.buttonPrimaryColor,
-    padding: 6,
+    padding: 5,
     borderRadius: 999,
   },
   markerImage: {
-    borderColor: colors.white,
+    marginLeft: 8,
+    marginTop: 8,
   },
 });
