@@ -1,7 +1,7 @@
 import { FlatList, ScrollView, StyleSheet, Text, View } from 'react-native';
 import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { defaultContainer } from '../../styles/general';
+import { defaultContainer } from '../../utils/general';
 import { colors } from '../../utils/generalUtils';
 import BackButton from '../../components/BackButton';
 import { RootStackParamsList } from '../../types/basic';
@@ -125,7 +125,10 @@ const BookingDetails = (props: BookingDetailsProps) => {
           </View>
         </View>
       </ScrollView>
-      <Button onPress={() => {}} text="Continue" />
+      <Button
+        onPress={() => navigation.navigate('BookingLocation')}
+        text="Continue"
+      />
     </SafeAreaView>
   );
 };

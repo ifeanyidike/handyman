@@ -11,10 +11,6 @@
         "expo-local-authentication",
         {
           "faceIDPermission": "Allow Handy to use Face ID."
-        },
-        "expo-location",
-        {
-          "locationAlwaysAndWhenInUsePermission": "Allow Handyman to use your location."
         }
       ]
     ],

@@ -2,7 +2,7 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 import React, { useState } from 'react';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
-import { defaultContainer } from '../styles/general';
+import { defaultContainer } from '../utils/general';
 import BackButton from '../components/BackButton';
 import { Navigation } from '../types/basic';
 import { SafeAreaView } from 'react-native-safe-area-context';

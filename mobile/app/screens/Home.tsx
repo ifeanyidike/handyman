@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { defaultContainer } from '../styles/general';
+import { defaultContainer } from '../utils/general';
 import Notification from '../assets/icons/Notification';
 import Bookmark from '../assets/icons/Bookmark';
 import CustomInput from '../components/CustomInput';

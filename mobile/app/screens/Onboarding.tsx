@@ -8,7 +8,7 @@ import { sliderData } from '../utils/pagesUtils';
 import * as SplashScreen from 'expo-splash-screen';
 import { Navigation } from '../types/basic';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { defaultContainer } from '../styles/general';
+import { defaultContainer } from '../utils/general';
 import useLoadFonts from '../hooks/useLoadFonts';
 
 const Onboarding = ({ navigation }: Navigation) => {

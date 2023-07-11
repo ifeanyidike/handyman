@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { AntDesign, Feather, Ionicons } from '@expo/vector-icons';
 
-import { defaultContainer } from '../styles/general';
+import { defaultContainer } from '../utils/general';
 import { Navigation } from '../types/basic';
 import BackButton from '../components/BackButton';
 import PickImage from '../components/PickImage';

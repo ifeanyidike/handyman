@@ -12,7 +12,7 @@ import React, { useEffect, useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import { defaultContainer } from '../styles/general';
+import { defaultContainer } from '../utils/general';
 import BackButton from '../components/BackButton';
 import { Navigation } from '../types/basic';
 import Button from '../components/Button';

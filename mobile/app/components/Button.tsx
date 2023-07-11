@@ -1,12 +1,7 @@
-import {
-  Dimensions,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import { Dimensions, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import { colors } from '../utils/generalUtils';
+import { ButtonStyle } from '../styles/utils';
 
 interface Props {
   onPress: () => void;
@@ -30,18 +25,14 @@ const Button = (props: Props) => {
 
   return (
     <View style={[styles.container, additionalStyle]}>
-      <TouchableOpacity
+      <ButtonStyle
+        style={styles.button}
         onPress={onPress}
-        style={[
-          styles.button,
-          {
-            backgroundColor,
-            width: customWidth || width - 40,
-          },
-        ]}
+        backgroundColor={backgroundColor}
+        width={customWidth}
       >
         <Text style={[styles.text, { color: textColor }]}>{text}</Text>
-      </TouchableOpacity>
+      </ButtonStyle>
     </View>
   );
 };
@@ -54,16 +45,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   button: {
-    padding: 15,
-    borderRadius: 50,
-    shadowColor: colors.black,
     shadowOffset: {
-      width: 2,
+      width: 10,
       height: 1,
     },
-    shadowOpacity: 0.25,
-    shadowRadius: 5,
-    elevation: 1,
   },
   text: {
     textAlign: 'center',

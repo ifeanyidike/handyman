@@ -4,7 +4,7 @@ import BackButton from '../../components/BackButton';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamsList } from '../../types/basic';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { defaultContainer } from '../../styles/general';
+import { defaultContainer } from '../../utils/general';
 import CleaningBookingLanding from '../../components/Prebooking/CleaningBookingLanding';
 import { colors, services } from '../../utils/generalUtils';
 import CarRepairsLanding from '../../components/Prebooking/CarRepairsLanding';

@@ -1,6 +1,6 @@
 import { Dimensions, ScrollView, StyleSheet, View } from 'react-native';
 import React, { useState } from 'react';
-import { defaultContainer } from '../styles/general';
+import { defaultContainer } from '../utils/general';
 import BackButton from '../components/BackButton';
 import { CardItem, RootStackParamsList } from '../types/basic';
 import { SafeAreaView } from 'react-native-safe-area-context';

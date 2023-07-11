@@ -9,7 +9,7 @@ import TextInBetweenLines from '../components/TextInBetweenLines';
 import Button from '../components/Button';
 import AuthCall from '../components/AuthCall';
 import BackButton from '../components/BackButton';
-import { defaultContainer } from '../styles/general';
+import { defaultContainer } from '../utils/general';
 
 const AuthHome = ({ navigation }: Navigation) => {
   return (

@@ -27,6 +27,6 @@ const styles = StyleSheet.create({
   navTitle: {
     marginLeft: 15,
     fontFamily: 'Urbanist_600SemiBold',
-    fontSize: 24,
+    fontSize: 22,
   },
 });
