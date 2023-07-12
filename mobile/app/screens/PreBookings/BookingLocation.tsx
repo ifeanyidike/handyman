@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, View, Dimensions } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { defaultContainer } from '../../utils/general';
 import { colors } from '../../utils/generalUtils';
@@ -10,6 +10,12 @@ import * as Location from 'expo-location';
 import MapView, { Marker } from 'react-native-maps';
 import { MarkerImage } from '../../styles/utils';
 import MarkerImageIcon from '../../assets/icons/MarkerImageIcon';
+import Dialog, { ModalContent } from '../../components/Dialog';
+import HrLine from '../../components/HrLine';
+import Button from '../../components/Button';
+import CustomInput from '../../components/CustomInput';
+import { Ionicons } from '@expo/vector-icons';
+const { width } = Dimensions.get('screen');
 
 type BookingDetailsProps = NativeStackScreenProps<
   RootStackParamsList,
@@ -32,6 +38,19 @@ const BookingLocation = (props: BookingDetailsProps) => {
       }
 
       let location = await Location.getCurrentPositionAsync({});
+      // let subscription = await Location.watchPositionAsync(
+      //   {
+      //     accuracy: Location.LocationAccuracy.BestForNavigation,
+      //     timeInterval: 5000, // Interval between location updates (in milliseconds)
+      //     distanceInterval: 0, // Minimum distance between location updates (in meters)
+      //   },
+      //   location => {
+      //     // Handle updated location data here
+      //     console.log('location from subscription', location);
+      //     setLocation(location);
+      //   }
+      // );
+      // console.log('subscription', subscription);
 
       setLocation(location);
     })();
@@ -84,6 +103,36 @@ const BookingLocation = (props: BookingDetailsProps) => {
               </MarkerImageIcon>
             </Marker>
           </MapView>
+
+          <ModalContent
+            modalOpen={true}
+            fullWidth={true}
+            flatBottom={true}
+            pinToBottom={true}
+            grayBackground={false}
+            isNotModal={true}
+          >
+            <Text style={styles.locationTitle}>Location Details</Text>
+            <HrLine space={10} />
+
+            <Text style={styles.addr}>Address</Text>
+            <View style={{ marginBottom: 15 }}>
+              <CustomInput
+                placeholder="Your address"
+                value="267 New Avenue Park, New York"
+                customWidth={width - 30}
+                SuffixIcon={
+                  <Ionicons name="location" size={24} color="black" />
+                }
+              />
+            </View>
+            <Button
+              onPress={() => {}}
+              text="Continue"
+              backgroundColor={colors.buttonPrimaryColor}
+              textColor={colors.white}
+            />
+          </ModalContent>
         </View>
       )}
     </SafeAreaView>
@@ -113,5 +162,15 @@ const styles = StyleSheet.create({
   markerImage: {
     marginLeft: 8,
     marginTop: 8,
+  },
+  locationTitle: {
+    fontFamily: 'Urbanist_800ExtraBold',
+    fontSize: 24,
+  },
+  addr: {
+    fontFamily: 'Urbanist_600SemiBold',
+    fontSize: 18,
+    marginBottom: 15,
+    alignSelf: 'flex-start',
   },
 });

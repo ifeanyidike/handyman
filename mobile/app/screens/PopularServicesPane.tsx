@@ -10,7 +10,7 @@ import {
 import React, { useState } from 'react';
 import { defaultContainer } from '../utils/general';
 import BackButton from '../components/BackButton';
-import { CardItem, Navigation } from '../types/basic';
+import { CardItem, Nav, Navigation } from '../types/basic';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { colors, servicesList, testServices } from '../utils/generalUtils';
 import NavButton from '../components/NavButton';
@@ -20,7 +20,7 @@ import Button from '../components/Button';
 
 const { width } = Dimensions.get('screen');
 const PopularServicesPane = ({ navigation }: Navigation) => {
-  const [navClicked, toggleNavClicked] = useState({
+  const [navClicked, toggleNavClicked] = useState<Nav>({
     index: 0,
   });
   const customButtonWidth = width / 2 - 20;

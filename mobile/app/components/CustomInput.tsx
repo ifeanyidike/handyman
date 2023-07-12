@@ -16,7 +16,7 @@ interface Props {
   placeholder: string;
   value?: string;
   setSearchText?: (e: string) => void;
-  customWidth?: number;
+  customWidth?: number | string;
   height?: number;
   handleSubmit?: (
     e: NativeSyntheticEvent<TextInputSubmitEditingEventData>

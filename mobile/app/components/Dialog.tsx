@@ -3,7 +3,7 @@ import React, { ReactNode } from 'react';
 import { colors } from '../utils/generalUtils';
 
 type Props = {
-  modalOpen: boolean;
+  modalOpen?: boolean;
   toggleModal?: (e: boolean) => void;
   children?: ReactNode;
   borderTopRadius?: number;
@@ -11,6 +11,7 @@ type Props = {
   fullWidth?: boolean;
   pinToBottom?: boolean;
   grayBackground?: boolean;
+  isNotModal?: boolean;
 };
 const Dialog = (props: Props) => {
   const {
@@ -28,34 +29,57 @@ const Dialog = (props: Props) => {
       transparent={true}
       onRequestClose={() => {}}
     >
+      <ModalContent
+        flatBottom={flatBottom}
+        fullWidth={fullWidth}
+        pinToBottom={pinToBottom}
+        grayBackground={grayBackground}
+      >
+        {children}
+      </ModalContent>
+    </Modal>
+  );
+};
+
+export const ModalContent = (props: Props) => {
+  const {
+    children,
+    flatBottom,
+    fullWidth,
+    pinToBottom,
+    grayBackground,
+    isNotModal,
+  } = props;
+
+  return (
+    <View
+      style={[
+        styles.modalContainer,
+        isNotModal && { marginBottom: -200 },
+        pinToBottom && { justifyContent: 'flex-end' },
+        grayBackground && {
+          backgroundColor: colors.nearBlack,
+          opacity: 0.9,
+        },
+      ]}
+    >
       <View
         style={[
-          styles.modalContainer,
-          pinToBottom && { justifyContent: 'flex-end' },
-          grayBackground && {
-            backgroundColor: colors.nearBlack,
-            opacity: 0.9,
+          styles.modalView,
+          flatBottom && {
+            opacity: 1,
+            borderRadius: 50,
+            borderBottomLeftRadius: 0,
+            borderBottomRightRadius: 0,
+          },
+          fullWidth && {
+            margin: 0,
           },
         ]}
       >
-        <View
-          style={[
-            styles.modalView,
-            flatBottom && {
-              opacity: 1,
-              borderRadius: 50,
-              borderBottomLeftRadius: 0,
-              borderBottomRightRadius: 0,
-            },
-            fullWidth && {
-              margin: 0,
-            },
-          ]}
-        >
-          {children}
-        </View>
+        {children}
       </View>
-    </Modal>
+    </View>
   );
 };
 
