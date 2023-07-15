@@ -1,21 +1,19 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import { colors } from '../../utils/generalUtils';
-import BookingCard from '../../components/Bookings/BookingCard';
 
-const Upcoming = () => {
+const BookingCard = () => {
   return (
     <View style={styles.container}>
-      <BookingCard />
+      <Text>BookingCard</Text>
     </View>
   );
 };
 
-export default Upcoming;
+export default BookingCard;
 
 const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.white,
-    flex: 1,
   },
 });
