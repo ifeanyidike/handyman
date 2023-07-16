@@ -1,29 +1,13 @@
-import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import React from 'react';
 import { colors, testBookings } from '../../utils/generalUtils';
-import BookingCard from '../../components/Bookings/BookingCard';
+import { bookingStatus } from '../../types/basic';
+import ListItems from './ListItems';
 
 const Upcoming = () => {
   return (
     <View style={styles.container}>
-      <FlatList
-        contentContainerStyle={styles.contentContainer}
-        data={testBookings}
-        renderItem={({ item, index }) => (
-          <BookingCard
-            Icon={item.Icon}
-            serviceName={item.serviceName}
-            userName={item.userName}
-            status="Upcoming"
-            address={item.location}
-            lat={item.lat}
-            lng={item.lng}
-          />
-        )}
-        snapToAlignment="center"
-        showsVerticalScrollIndicator={true}
-        style={{ flex: 1 }}
-      />
+      <ListItems data={testBookings} status={bookingStatus.upcoming} />
     </View>
   );
 };

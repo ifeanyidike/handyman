@@ -1,4 +1,11 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import {
+  Dimensions,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import React, { useState } from 'react';
 import { colors } from '../../utils/generalUtils';
 import ChatAlt from '../../assets/icons/ChatAlt';
@@ -7,25 +14,43 @@ import HrLine from '../HrLine';
 import ArrowDown from '../../assets/icons/ArrowDown';
 import ArrowUp from '../../assets/icons/ArrowUp';
 import Map from '../Map';
-import ButtonGroup from '../../screens/ButtonGroup';
-import { BookingStatus } from '../../types/basic';
+import ButtonGroup from '../ButtonGroup';
+import { bookingStatus } from '../../types/basic';
+import Button from '../Button';
+import Dialog from '../Dialog';
 
 type Props = {
   Icon: number;
   serviceName: string;
   userName: string;
-  status: BookingStatus;
+  status: bookingStatus;
   address: string;
   lat: number;
   lng: number;
 };
+
+const { width } = Dimensions.get('screen');
 const BookingCard = (props: Props) => {
   const { Icon, serviceName, userName, status } = props;
-  const tag = status?.toLowerCase();
   const [open, toggleOpen] = useState(false);
+  const [cancelBooking, toggleCancelBooking] = useState<boolean>(false);
 
-  const leftAction = { btn: () => {}, text: 'Cancel Booking' };
+  const leftAction = {
+    btn: () => toggleCancelBooking(true),
+    text: 'Cancel Booking',
+  };
   const rightAction = { btn: () => {}, text: 'View E-Receipt' };
+
+  const leftCancelBookingAction = {
+    btn: () => {
+      toggleCancelBooking(false);
+    },
+    text: 'Cancel',
+  };
+  const rightCancelBookingAction = {
+    btn: () => {},
+    text: 'Yes, Cancel Booking',
+  };
   return (
     <View style={styles.container}>
       <View style={styles.topContent}>
@@ -38,9 +63,9 @@ const BookingCard = (props: Props) => {
               styles.status,
               {
                 backgroundColor:
-                  tag === 'upcoming'
+                  status === bookingStatus.upcoming
                     ? colors.primaryColor
-                    : tag === 'completed'
+                    : status === bookingStatus.completed
                     ? colors.green
                     : colors.status,
               },
@@ -73,14 +98,25 @@ const BookingCard = (props: Props) => {
             markerSize={35}
           />
           <View style={styles.action}>
-            <ButtonGroup
-              padding={8}
-              leftAction={leftAction}
-              rightAction={rightAction}
-              customWidth={150}
-              groupWidth="100%"
-              justifyType="space-between"
-            />
+            {status === bookingStatus.upcoming ? (
+              <ButtonGroup
+                padding={8}
+                leftAction={leftAction}
+                rightAction={rightAction}
+                customWidth={150}
+                groupWidth="100%"
+                justifyType="space-between"
+              />
+            ) : status === bookingStatus.completed ? (
+              <Button
+                padding={10}
+                customWidth="100%"
+                text="View  E-Receipt"
+                onPress={() => {}}
+              />
+            ) : (
+              <></>
+            )}
           </View>
         </View>
       )}
@@ -90,6 +126,34 @@ const BookingCard = (props: Props) => {
       >
         {open ? <ArrowUp size="25" /> : <ArrowDown size="25" />}
       </TouchableOpacity>
+
+      {cancelBooking && (
+        <Dialog
+          modalOpen={!!cancelBooking}
+          fullWidth={true}
+          flatBottom={true}
+          pinToBottom={true}
+          grayBackground={true}
+        >
+          <Text style={styles.modalTitle}>Cancel Booking</Text>
+          <HrLine space={20} bg={colors.fainterText} />
+          <Text style={styles.prompt}>
+            Are you sure you want to cancel your service booking?
+          </Text>
+          <Text style={styles.text}>
+            You will be refunded only 80% of the money from your payment
+            according to our policy
+          </Text>
+          <HrLine space={20} bg={colors.fainterText} />
+
+          <ButtonGroup
+            leftAction={leftCancelBookingAction}
+            rightAction={rightCancelBookingAction}
+            leftCustomWidth={width / 3}
+            rightCustomWidth={(2 * width) / 3 - 40}
+          />
+        </Dialog>
+      )}
     </View>
   );
 };
@@ -139,8 +203,8 @@ const styles = StyleSheet.create({
   },
   chat: {
     position: 'absolute',
-    right: 10,
-    bottom: 25,
+    right: 5,
+    bottom: 0,
   },
   toggleBtn: {
     marginLeft: 'auto',
@@ -166,4 +230,21 @@ const styles = StyleSheet.create({
     borderRadius: 50,
   },
   action: {},
+  modalTitle: {
+    fontFamily: 'Urbanist_700Bold',
+    color: colors.status,
+    fontSize: 20,
+  },
+  prompt: {
+    fontFamily: 'Urbanist_600SemiBold',
+    fontSize: 14,
+    textAlign: 'center',
+    marginBottom: 10,
+  },
+  text: {
+    fontFamily: 'Urbanist_400Regular',
+    fontSize: 12,
+    marginVertical: 10,
+    textAlign: 'center',
+  },
 });

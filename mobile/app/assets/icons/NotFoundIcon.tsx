@@ -7,6 +7,7 @@ import {
   LinearGradient,
   Path,
   Rect,
+  Stop,
   Svg,
 } from 'react-native-svg';
 
@@ -372,9 +373,9 @@ const NotFoundIcon = () => {
             y2="81.3243"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stopColor="#808080" stopOpacity="0.25" />
-            <stop offset="0.54" stopColor="#808080" stopOpacity="0.12" />
-            <stop offset="1" stopColor="#808080" stopOpacity="0.1" />
+            <Stop stopColor="#808080" stopOpacity="0.25" />
+            <Stop offset="0.54" stopColor="#808080" stopOpacity="0.12" />
+            <Stop offset="1" stopColor="#808080" stopOpacity="0.1" />
           </LinearGradient>
           <ClipPath id="clip0_1138_42884">
             <Rect

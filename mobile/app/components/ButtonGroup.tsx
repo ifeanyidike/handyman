@@ -1,6 +1,6 @@
 import { Dimensions, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
-import Button from '../components/Button';
+import Button from './Button';
 import { colors } from '../utils/generalUtils';
 const { width } = Dimensions.get('screen');
 
@@ -25,6 +25,8 @@ type Props = {
   padding?: number;
   groupWidth?: number | string;
   justifyType?: JustifyContent;
+  leftCustomWidth?: number;
+  rightCustomWidth?: number;
 };
 const ButtonGroup = (props: Props) => {
   const customButtonWidth = width / 2 - 20;
@@ -34,6 +36,8 @@ const ButtonGroup = (props: Props) => {
     customWidth = customButtonWidth,
     groupWidth = width,
     justifyType = 'space-around',
+    leftCustomWidth,
+    rightCustomWidth,
   } = props;
 
   return (
@@ -48,13 +52,13 @@ const ButtonGroup = (props: Props) => {
         text={leftAction.text}
         backgroundColor={colors.secondaryColor}
         textColor={colors.primaryColor}
-        customWidth={customWidth}
+        customWidth={leftCustomWidth || customWidth}
         padding={props.padding}
       />
       <Button
         onPress={rightAction.btn}
         text={rightAction.text}
-        customWidth={customWidth}
+        customWidth={rightCustomWidth || customWidth}
         padding={props.padding}
       />
     </View>

@@ -14,7 +14,8 @@ export const ButtonStyle = styled.TouchableOpacity<{
   shadow-radius: 50px;
   elevation: 1;
   background-color: ${props => props.backgroundColor};
-  width: ${props => props.width}px;
+  width: ${props =>
+    typeof props.width === 'number' ? `${props.width}px` : props.width};
 `;
 
 export const MarkerImage = styled.Image<{ markerSize: number }>`

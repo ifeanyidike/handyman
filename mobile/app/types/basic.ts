@@ -35,6 +35,20 @@ export type RootStackParamsList = {
   BookingLocation: undefined;
 };
 
+export type MainTabParamsList = {
+  Home: undefined;
+  Bookings: undefined;
+  Calendar: undefined;
+  Inbox: undefined;
+  UserProfile: undefined;
+};
+
+export type BookingTopTabParamsList = {
+  Upcoming: undefined;
+  Completed: undefined;
+  Cancelled: undefined;
+};
+
 export type CardItem = {
   Icon: number;
   userName: string;
@@ -54,4 +68,8 @@ export type Nav = {
   index: number | null;
 };
 
-export type BookingStatus = 'Upcoming' | 'Completed' | 'Cancelled';
+export enum bookingStatus {
+  upcoming = 'Upcoming',
+  completed = 'Completed',
+  cancelled = 'Cancelled',
+}

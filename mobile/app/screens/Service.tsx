@@ -33,7 +33,7 @@ import { AntDesign } from '@expo/vector-icons';
 import ReviewComment from '../components/ReviewComment';
 import ReviewStar from '../components/ReviewStar';
 import Button from '../components/Button';
-import ButtonGroup from './ButtonGroup';
+import ButtonGroup from '../components/ButtonGroup';
 
 const { width } = Dimensions.get('window');
 const _aboutStr = `Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis,possimus consequuntur ducimus labore iure sit accusamus exercitationem voluptas ipsum aliquid veritatis saepe numquam ipsa praesentium nemo natus, hic quidem repellat impedit! Optio inventore, quas atque praesentium hic impedit dolore asperiores reprehenderit enim. Dicta, cupiditate fuga quae quod veritatis quidem ipsum?`;
