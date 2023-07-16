@@ -14,24 +14,26 @@ const ListItems = (props: Props) => {
   return (
     <View style={styles.container}>
       {data?.length ? (
-        <FlatList
-          contentContainerStyle={styles.contentContainer}
-          data={testBookings}
-          renderItem={({ item, index }) => (
-            <BookingCard
-              Icon={item.Icon}
-              serviceName={item.serviceName}
-              userName={item.userName}
-              status={status}
-              address={item.location}
-              lat={item.lat}
-              lng={item.lng}
-            />
-          )}
-          snapToAlignment="center"
-          showsVerticalScrollIndicator={true}
-          style={{ flex: 1 }}
-        />
+        <>
+          <FlatList
+            contentContainerStyle={styles.contentContainer}
+            data={testBookings}
+            renderItem={({ item, index }) => (
+              <BookingCard
+                Icon={item.Icon}
+                serviceName={item.serviceName}
+                userName={item.userName}
+                status={status}
+                address={item.location}
+                lat={item.lat}
+                lng={item.lng}
+              />
+            )}
+            snapToAlignment="center"
+            showsVerticalScrollIndicator={true}
+            style={{ flex: 1 }}
+          />
+        </>
       ) : (
         <NotFound status={status} />
       )}
@@ -49,5 +51,6 @@ const styles = StyleSheet.create({
   contentContainer: {
     gap: 30,
     marginVertical: 30,
+    paddingBottom: 100,
   },
 });
