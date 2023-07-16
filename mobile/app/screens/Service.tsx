@@ -19,7 +19,7 @@ import {
 } from '../utils/pagesUtils';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import BackButton from '../components/BackButton';
-import { RootStackParamsList } from '../types/basic';
+import { Nav, RootStackParamsList } from '../types/basic';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import Bookmark from '../assets/icons/Bookmark';
 import { colors } from '../utils/generalUtils';
@@ -40,7 +40,7 @@ const _aboutStr = `Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis
 const stars = ['All', '5', '4', '3', '2', '1'];
 type ServiceProps = NativeStackScreenProps<RootStackParamsList, 'Service'>;
 const Service = (props: ServiceProps) => {
-  const [navClicked, toggleNavClicked] = useState({
+  const [navClicked, toggleNavClicked] = useState<Nav>({
     index: 0,
   });
   const [expandAbout, setExpandAbout] = useState(false);

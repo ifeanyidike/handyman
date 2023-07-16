@@ -15,6 +15,9 @@ const Upcoming = () => {
             serviceName={item.serviceName}
             userName={item.userName}
             status="Upcoming"
+            address={item.location}
+            lat={item.lat}
+            lng={item.lng}
           />
         )}
         snapToAlignment="center"

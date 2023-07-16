@@ -10,6 +10,7 @@ interface Props {
   additionalStyle?: any;
   customWidth?: number | string;
   textColor?: string;
+  padding?: number;
 }
 
 const { width } = Dimensions.get('screen');
@@ -21,6 +22,7 @@ const Button = (props: Props) => {
     textColor = colors.backgroundColor,
     backgroundColor = colors.primaryColor,
     additionalStyle = {},
+    padding = 15,
   } = props;
 
   return (
@@ -30,6 +32,7 @@ const Button = (props: Props) => {
         onPress={onPress}
         backgroundColor={backgroundColor}
         width={customWidth}
+        padding={padding}
       >
         <Text style={[styles.text, { color: textColor }]}>{text}</Text>
       </ButtonStyle>

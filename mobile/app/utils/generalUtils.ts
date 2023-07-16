@@ -123,6 +123,8 @@ export const testBookings = [
     startTime: new Date(),
     endTime: new Date(),
     location: '267 New Avenue Park, New York',
+    lng: 6.989882253312608,
+    lat: 4.8929761488388905,
   },
   {
     Icon: require('../assets/card_image2.png'),
@@ -131,6 +133,8 @@ export const testBookings = [
     startTime: new Date(),
     endTime: new Date(),
     location: '267 New Avenue Park, New York',
+    lng: 6.989882253312608,
+    lat: 4.8929761488388905,
   },
   {
     Icon: require('../assets/card_image3.png'),
@@ -139,6 +143,8 @@ export const testBookings = [
     startTime: new Date(),
     endTime: new Date(),
     location: '267 New Avenue Park, New York',
+    lng: 6.989882253312608,
+    lat: 4.8929761488388905,
   },
   {
     Icon: require('../assets/card_image4.png'),
@@ -147,6 +153,8 @@ export const testBookings = [
     startTime: new Date(),
     endTime: new Date(),
     location: '267 New Avenue Park, New York',
+    lng: 6.989882253312608,
+    lat: 4.8929761488388905,
   },
   {
     Icon: require('../assets/card_image3.png'),
@@ -155,6 +163,8 @@ export const testBookings = [
     startTime: new Date(),
     endTime: new Date(),
     location: '267 New Avenue Park, New York',
+    lng: 6.989882253312608,
+    lat: 4.8929761488388905,
   },
 ];
 

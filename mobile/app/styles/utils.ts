@@ -5,8 +5,9 @@ import { colors } from '../utils/generalUtils';
 export const ButtonStyle = styled.TouchableOpacity<{
   backgroundColor: string;
   width: number | string;
+  padding: number;
 }>`
-  padding: 15px;
+  padding: ${props => props.padding}px;
   border-radius: 50px;
   shadow-color: ${colors.black};
   shadow-opacity: 0.25;
@@ -16,8 +17,8 @@ export const ButtonStyle = styled.TouchableOpacity<{
   width: ${props => props.width}px;
 `;
 
-export const MarkerImage = styled.Image`
-  width: 35px;
-  height: 35px;
+export const MarkerImage = styled.Image<{ markerSize: number }>`
+  width: ${props => props.markerSize}px;
+  height: ${props => props.markerSize}px;
   border-radius: 999px;
 `;

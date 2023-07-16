@@ -1,11 +1,10 @@
-import { NavigationScreenProp } from 'react-native';
 export interface Item {
   img: number;
   text?: string;
 }
 
 export interface Navigation {
-  navigation: NavigationScreenProp<any, any>;
+  navigation: any;
 }
 
 export type RootStackParamsList = {
@@ -22,15 +21,15 @@ export type RootStackParamsList = {
   PopularServices: undefined;
   AllServices: undefined;
   ServiceProviders: {
-    serviceKey;
+    serviceKey: string;
   };
   Service: {
-    serviceName;
-    serviceKey;
+    serviceName: string;
+    serviceKey: string;
   };
   BookingStart: {
-    serviceName;
-    serviceKey;
+    serviceName: string;
+    serviceKey: string;
   };
   BookingDetails: undefined;
   BookingLocation: undefined;
@@ -51,6 +50,8 @@ export type SearchTextType = {
   count: number;
 };
 
-type Nav = {
+export type Nav = {
   index: number | null;
 };
+
+export type BookingStatus = 'Upcoming' | 'Completed' | 'Cancelled';

@@ -16,6 +16,7 @@ import Button from '../../components/Button';
 import CustomInput from '../../components/CustomInput';
 import { Ionicons } from '@expo/vector-icons';
 import { getMapAddr } from '../../utils/pagesUtils';
+import Map from '../../components/Map';
 const { width } = Dimensions.get('screen');
 
 type BookingDetailsProps = NativeStackScreenProps<
@@ -74,38 +75,11 @@ const BookingLocation = (props: BookingDetailsProps) => {
 
       {location?.coords?.latitude && (
         <View style={styles.mapView}>
-          <MapView
-            style={styles.map}
-            region={{
-              latitude: location?.coords?.latitude,
-              longitude: location?.coords?.longitude,
-              latitudeDelta: 0.0932,
-              longitudeDelta: 0.0456,
-            }}
-          >
-            <Marker
-              coordinate={{
-                latitude: location?.coords?.latitude,
-                longitude: location?.coords?.longitude,
-              }}
-              title="Ifeanyi Dike"
-              description="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi, dolorum!"
-            >
-              <MarkerImageIcon>
-                <MarkerImage
-                  style={[
-                    styles.markerImage,
-                    {
-                      marginLeft: 8,
-                      marginTop: 8,
-                    },
-                  ]}
-                  resizeMode="contain"
-                  source={require('../../assets/Person2.png')}
-                />
-              </MarkerImageIcon>
-            </Marker>
-          </MapView>
+          <Map
+            latitude={location.coords.latitude}
+            longitude={location.coords.longitude}
+            mapStyle={styles.map}
+          />
 
           <ModalContent
             modalOpen={true}
