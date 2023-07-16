@@ -18,14 +18,14 @@ const Tab = createBottomTabNavigator();
 const Main = () => {
   useExitAppOnBackButton();
   const getIconFillColor = (focused: boolean) => {
-    if (focused) return colors.buttonPrimaryColor;
+    if (focused) return colors.primaryColor;
     return colors.tabMainColor;
   };
 
   return (
     <Tab.Navigator
       screenOptions={{
-        tabBarActiveTintColor: colors.buttonPrimaryColor,
+        tabBarActiveTintColor: colors.primaryColor,
         headerShown: false,
       }}
     >

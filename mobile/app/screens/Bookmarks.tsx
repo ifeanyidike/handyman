@@ -78,8 +78,8 @@ const Bookmarks = ({ navigation }: Navigation) => {
               <Button
                 onPress={() => toggleBookmarkModal(undefined)}
                 text="Cancel"
-                backgroundColor={colors.buttonSecondaryColor}
-                textColor={colors.buttonPrimaryColor}
+                backgroundColor={colors.secondaryColor}
+                textColor={colors.primaryColor}
                 customWidth={customButtonWidth}
               />
               <Button

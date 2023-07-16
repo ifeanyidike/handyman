@@ -19,7 +19,7 @@ const Button = (props: Props) => {
     text,
     customWidth = width - 40,
     textColor = colors.backgroundColor,
-    backgroundColor = colors.buttonPrimaryColor,
+    backgroundColor = colors.primaryColor,
     additionalStyle = {},
   } = props;
 

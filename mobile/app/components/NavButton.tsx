@@ -34,7 +34,7 @@ const NavButton = (props: Props) => {
     <TouchableOpacity
       style={[
         styles.container,
-        hasBackground && { backgroundColor: colors.buttonPrimaryColor },
+        hasBackground && { backgroundColor: colors.primaryColor },
         isSmall && { width: 60 },
         customWidth > 0 && { width: customWidth },
       ]}
@@ -58,13 +58,13 @@ const styles = StyleSheet.create({
   container: {
     borderRadius: 20,
     borderWidth: 2,
-    borderColor: colors.buttonPrimaryColor,
+    borderColor: colors.primaryColor,
     width: 100,
     paddingVertical: 5,
     marginHorizontal: 5,
   },
   text: {
     textAlign: 'center',
-    color: colors.buttonPrimaryColor,
+    color: colors.primaryColor,
   },
 });

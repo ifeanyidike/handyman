@@ -77,11 +77,11 @@ const ServiceCard = (props: Props) => {
           style={styles.bookmark}
           onPress={e => handleToggleBookmark(e)}
         >
-          <BookmarkAlt fillColor={colors.buttonPrimaryColor} />
+          <BookmarkAlt fillColor={colors.primaryColor} />
         </Pressable>
       ) : (
         <Pressable style={styles.bookmark} onPress={handleToggleBookmark}>
-          <Bookmark strokeColor={colors.buttonPrimaryColor} />
+          <Bookmark strokeColor={colors.primaryColor} />
         </Pressable>
       )}
     </TouchableOpacity>
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   serviceCost: {
-    color: colors.buttonPrimaryColor,
+    color: colors.primaryColor,
     fontFamily: 'Urbanist_700Bold',
     fontSize: 18,
     marginBottom: 10,

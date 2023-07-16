@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width,
     height,
-    backgroundColor: colors.buttonPrimaryColor,
+    backgroundColor: colors.primaryColor,
   },
   indicator: {
     position: 'absolute',

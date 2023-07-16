@@ -90,11 +90,11 @@ const Service = (props: ServiceProps) => {
             <Text style={styles.title}>{route.params?.serviceName}</Text>
             {bookmarkToggled ? (
               <Pressable onPress={e => handleToggleBookmark(e)}>
-                <BookmarkAlt fillColor={colors.buttonPrimaryColor} />
+                <BookmarkAlt fillColor={colors.primaryColor} />
               </Pressable>
             ) : (
               <Pressable onPress={handleToggleBookmark}>
-                <Bookmark strokeColor={colors.buttonPrimaryColor} />
+                <Bookmark strokeColor={colors.primaryColor} />
               </Pressable>
             )}
           </View>
@@ -112,7 +112,7 @@ const Service = (props: ServiceProps) => {
               <Ionicons
                 name="location-sharp"
                 size={23}
-                color={colors.buttonPrimaryColor}
+                color={colors.primaryColor}
               />
               <Text style={styles.locText}>
                 255 Grand Park Avenue, New York
@@ -251,7 +251,7 @@ const styles = StyleSheet.create({
     marginTop: 25,
   },
   userName: {
-    color: colors.buttonPrimaryColor,
+    color: colors.primaryColor,
     fontFamily: 'Urbanist_600SemiBold',
     fontSize: 16,
   },
@@ -273,7 +273,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontFamily: 'Urbanist_600SemiBold',
     backgroundColor: '#7210ff14',
-    color: colors.buttonPrimaryColor,
+    color: colors.primaryColor,
     paddingHorizontal: 10,
     paddingVertical: 7,
     borderRadius: 8,
@@ -294,7 +294,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   amount: {
-    color: colors.buttonPrimaryColor,
+    color: colors.primaryColor,
     fontFamily: 'Urbanist_700Bold',
     fontSize: 36,
   },
@@ -316,7 +316,7 @@ const styles = StyleSheet.create({
   aboutDescAction: {},
   readMore: {
     fontFamily: 'Urbanist_700Bold',
-    color: colors.buttonPrimaryColor,
+    color: colors.primaryColor,
     padding: 5,
   },
   section: {

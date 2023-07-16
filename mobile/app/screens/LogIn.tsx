@@ -95,6 +95,6 @@ const styles = StyleSheet.create({
   forgotText: {
     fontFamily: 'Urbanist_600SemiBold',
     textAlign: 'center',
-    color: colors.buttonPrimaryColor,
+    color: colors.primaryColor,
   },
 });

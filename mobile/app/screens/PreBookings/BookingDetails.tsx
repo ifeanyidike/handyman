@@ -72,7 +72,7 @@ const BookingDetails = (props: BookingDetailsProps) => {
             [selected]: {
               selected: true,
               disableTouchEvent: true,
-              selectedColor: colors.buttonPrimaryColor,
+              selectedColor: colors.primaryColor,
               selectedTextColor: colors.white,
             },
           }}

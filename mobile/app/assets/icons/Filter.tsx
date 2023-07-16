@@ -8,7 +8,7 @@ type Props = {
   fillColor?: string;
 };
 const Filter = ({
-  strokeColor = colors.buttonPrimaryColor,
+  strokeColor = colors.primaryColor,
   fillColor = 'none',
 }: Props) => {
   return (

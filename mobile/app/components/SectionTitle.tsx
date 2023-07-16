@@ -39,6 +39,6 @@ const styles = StyleSheet.create({
   },
   sectionTitleAction: {
     fontSize: 16,
-    color: colors.buttonPrimaryColor,
+    color: colors.primaryColor,
   },
 });

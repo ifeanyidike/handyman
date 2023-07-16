@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
   },
   signUpCallAction: {},
   callText: {
-    color: colors.buttonPrimaryColor,
+    color: colors.primaryColor,
     fontWeight: '500',
     fontFamily: 'Urbanist_500Medium',
   },

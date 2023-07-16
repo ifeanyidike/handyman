@@ -2,8 +2,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { SearchTextType } from '../types/basic';
 
 export const colors = {
-  buttonPrimaryColor: '#7210FF',
-  buttonSecondaryColor: '#F1E7FF',
+  primaryColor: '#7210FF',
+  secondaryColor: '#F1E7FF',
   lineFaintColor: '#EEEEEE',
   lineFainterColor: '#EFEFEF',
   faintText: '#A2A2A2',
@@ -17,6 +17,7 @@ export const colors = {
   nearBlack: '#222222',
   indicatorLoader: '#00ff00',
   tabMainColor: '#9E9E9E',
+  status: '#F75555',
   dim: '#F5F5F5',
   gold: '#FB9400',
   grayScale: '#616161',
@@ -111,6 +112,49 @@ export const testServices = [
     serviceCost: '$24',
     averageRating: 4.9,
     numReviews: 6182,
+  },
+];
+
+export const testBookings = [
+  {
+    Icon: require('../assets/card_image1.png'),
+    userName: 'Kylee Danford',
+    serviceName: 'House Cleaning',
+    startTime: new Date(),
+    endTime: new Date(),
+    location: '267 New Avenue Park, New York',
+  },
+  {
+    Icon: require('../assets/card_image2.png'),
+    userName: 'Alfonzo Schuessler',
+    serviceName: 'Floor Cleaning',
+    startTime: new Date(),
+    endTime: new Date(),
+    location: '267 New Avenue Park, New York',
+  },
+  {
+    Icon: require('../assets/card_image3.png'),
+    userName: 'Sanjuanita Ordonez',
+    serviceName: 'Washing Clothes',
+    startTime: new Date(),
+    endTime: new Date(),
+    location: '267 New Avenue Park, New York',
+  },
+  {
+    Icon: require('../assets/card_image4.png'),
+    userName: 'Freida Varnes',
+    serviceName: 'Bathroom Cleaning',
+    startTime: new Date(),
+    endTime: new Date(),
+    location: '267 New Avenue Park, New York',
+  },
+  {
+    Icon: require('../assets/card_image3.png'),
+    userName: 'Sanjuanita Ordonez',
+    serviceName: 'Washing Clothes',
+    startTime: new Date(),
+    endTime: new Date(),
+    location: '267 New Avenue Park, New York',
   },
 ];
 

@@ -82,8 +82,8 @@ const FingerPrintSetup = ({ navigation }: Navigation) => {
           <Button
             onPress={() => toggleFinishModal(true)}
             text="Skip"
-            backgroundColor={colors.buttonSecondaryColor}
-            textColor={colors.buttonPrimaryColor}
+            backgroundColor={colors.secondaryColor}
+            textColor={colors.primaryColor}
             customWidth={customButtonWidth}
           />
           <Button
@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Urbanist_700Bold',
     marginTop: 20,
     fontSize: 18,
-    color: colors.buttonPrimaryColor,
+    color: colors.primaryColor,
   },
   modalText: {
     marginBottom: 15,

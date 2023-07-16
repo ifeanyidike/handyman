@@ -15,11 +15,11 @@ const MinusIcon = ({ size }: Props) => {
           width={size}
           height={size}
           rx={`${rx}`}
-          fill={colors.buttonSecondaryColor}
+          fill={colors.secondaryColor}
         />
         <Path
           d="M15.333 19.3335H24.6663V20.6668H15.333V19.3335Z"
-          fill={colors.buttonPrimaryColor}
+          fill={colors.primaryColor}
         />
       </Svg>
     </View>

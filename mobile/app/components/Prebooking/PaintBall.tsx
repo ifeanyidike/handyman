@@ -18,7 +18,7 @@ const PaintBall = (props: Props) => {
   const isWhiteBg = backgroundColor === colors.white;
 
   const borderColor = isWhiteBg ? colors.grayScale : colors.backgroundColor;
-  const iconColor = isWhiteBg ? colors.buttonPrimaryColor : colors.white;
+  const iconColor = isWhiteBg ? colors.primaryColor : colors.white;
 
   const paintIdx = selectedPaint.findIndex(p => p.color === backgroundColor);
   const handlePress = () => {

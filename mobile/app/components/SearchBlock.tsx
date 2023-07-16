@@ -51,11 +51,7 @@ const SearchBlock = (props: Props) => {
           <View style={styles.content}>
             <Text style={styles.contentText}>{item}</Text>
             <TouchableOpacity onPress={() => handleRemoveItem(item)}>
-              <Fontisto
-                name="close"
-                size={24}
-                color={colors.buttonPrimaryColor}
-              />
+              <Fontisto name="close" size={24} color={colors.primaryColor} />
             </TouchableOpacity>
           </View>
         )}
@@ -89,7 +85,7 @@ const styles = StyleSheet.create({
   clearAll: {
     fontFamily: 'Urbanist_600SemiBold',
     fontSize: 14,
-    color: colors.buttonPrimaryColor,
+    color: colors.primaryColor,
   },
   content: {
     flexDirection: 'row',

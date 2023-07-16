@@ -1,3 +1,4 @@
+import * as Location from 'expo-location';
 export const sliderData = [
   {
     img: require('../assets/handy-bin.png'),
@@ -119,3 +120,34 @@ export const reviewsData = [
     createdAt: '2 weeks ago',
   },
 ];
+
+export const getMapAddr = async (location: Location.LocationObject) => {
+  let addressArr = await Location.reverseGeocodeAsync(location.coords);
+  let addr = addressArr ? addressArr[0] : null;
+  if (!addr) return;
+  let {
+    streetNumber,
+    street,
+    subregion,
+    name,
+    city,
+    country,
+    district,
+    postalCode,
+    region,
+  } = addr || {};
+
+  let address = [
+    streetNumber,
+    street,
+    name,
+    district,
+    subregion,
+    postalCode + ',',
+    city + ',',
+    region + ',',
+    country,
+  ];
+
+  return address.filter(Boolean).join(' ');
+};

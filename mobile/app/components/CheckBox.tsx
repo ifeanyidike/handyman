@@ -33,11 +33,7 @@ const CheckBox = (props: Props) => {
       ]}
     >
       {isChecked && (
-        <FontAwesome
-          name="check"
-          size={size - 5}
-          color={colors.buttonPrimaryColor}
-        />
+        <FontAwesome name="check" size={size - 5} color={colors.primaryColor} />
       )}
     </Pressable>
   );
@@ -51,6 +47,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 8,
-    borderColor: colors.buttonPrimaryColor,
+    borderColor: colors.primaryColor,
   },
 });

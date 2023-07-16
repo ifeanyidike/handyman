@@ -15,11 +15,11 @@ const PlusIcon = ({ size }: Props) => {
           width={size}
           height={size}
           rx={`${rx}`}
-          fill={colors.buttonSecondaryColor}
+          fill={colors.secondaryColor}
         />
         <Path
           d="M24.6663 19.3335H20.6663V15.3335H19.333V19.3335H15.333V20.6668H19.333V24.6668H20.6663V20.6668H24.6663V19.3335Z"
-          fill={colors.buttonPrimaryColor}
+          fill={colors.primaryColor}
         />
       </Svg>
     </View>

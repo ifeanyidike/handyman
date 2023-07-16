@@ -15,6 +15,7 @@ import HrLine from '../../components/HrLine';
 import Button from '../../components/Button';
 import CustomInput from '../../components/CustomInput';
 import { Ionicons } from '@expo/vector-icons';
+import { getMapAddr } from '../../utils/pagesUtils';
 const { width } = Dimensions.get('screen');
 
 type BookingDetailsProps = NativeStackScreenProps<
@@ -27,6 +28,7 @@ const BookingLocation = (props: BookingDetailsProps) => {
   const [location, setLocation] = useState<Location.LocationObject | null>(
     null
   );
+  const [addr, setAddr] = useState<string | undefined>('');
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   useEffect(() => {
@@ -51,7 +53,8 @@ const BookingLocation = (props: BookingDetailsProps) => {
       //   }
       // );
       // console.log('subscription', subscription);
-
+      const addr = await getMapAddr(location);
+      setAddr(addr);
       setLocation(location);
     })();
   }, []);
@@ -119,7 +122,7 @@ const BookingLocation = (props: BookingDetailsProps) => {
             <View style={{ marginBottom: 15 }}>
               <CustomInput
                 placeholder="Your address"
-                value="267 New Avenue Park, New York"
+                value={addr}
                 customWidth={width - 30}
                 SuffixIcon={
                   <Ionicons name="location" size={24} color="black" />
@@ -129,7 +132,7 @@ const BookingLocation = (props: BookingDetailsProps) => {
             <Button
               onPress={() => {}}
               text="Continue"
-              backgroundColor={colors.buttonPrimaryColor}
+              backgroundColor={colors.primaryColor}
               textColor={colors.white}
             />
           </ModalContent>
@@ -155,7 +158,7 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   marker: {
-    backgroundColor: colors.buttonPrimaryColor,
+    backgroundColor: colors.primaryColor,
     padding: 5,
     borderRadius: 999,
   },

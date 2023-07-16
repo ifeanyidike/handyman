@@ -61,6 +61,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#ccc',
   },
   dotActive: {
-    backgroundColor: colors.buttonPrimaryColor,
+    backgroundColor: colors.primaryColor,
   },
 });

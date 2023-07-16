@@ -21,8 +21,8 @@ const ButtonGroup = (props: Props) => {
       <Button
         onPress={leftAction.btn}
         text={leftAction.text}
-        backgroundColor={colors.buttonSecondaryColor}
-        textColor={colors.buttonPrimaryColor}
+        backgroundColor={colors.secondaryColor}
+        textColor={colors.primaryColor}
         customWidth={customWidth}
       />
       <Button

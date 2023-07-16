@@ -36,10 +36,10 @@ const styles = StyleSheet.create({
   star: {
     fontSize: 16,
     fontFamily: 'Urbanist_400Regular',
-    color: colors.buttonPrimaryColor,
+    color: colors.primaryColor,
   },
   starNum: {
     fontFamily: 'Urbanist_600SemiBold',
-    color: colors.buttonPrimaryColor,
+    color: colors.primaryColor,
   },
 });
