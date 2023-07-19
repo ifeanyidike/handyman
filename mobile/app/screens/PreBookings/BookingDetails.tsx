@@ -6,12 +6,12 @@ import { colors } from '../../utils/generalUtils';
 import BackButton from '../../components/BackButton';
 import { RootStackParamsList } from '../../types/basic';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { Calendar } from 'react-native-calendars';
 import ToggleBookingCount from '../../components/Prebooking/ToggleBookingCount';
 import NavButton from '../../components/NavButton';
 import CustomInput from '../../components/CustomInput';
 import PlusIcon from '../../assets/icons/PlusIcon';
 import Button from '../../components/Button';
+import CalendarComponent from '../../components/CalendarComponent';
 
 type BookingDetailsProps = NativeStackScreenProps<
   RootStackParamsList,
@@ -53,30 +53,7 @@ const BookingDetails = (props: BookingDetailsProps) => {
       <BackButton navigation={navigation} title="Booking Details" />
       <ScrollView style={styles.content}>
         <Text style={styles.dateTitle}>Select Date</Text>
-        <Calendar
-          style={{
-            borderRadius: 8,
-            columnGap: 0,
-          }}
-          enableSwipeMonths={true}
-          theme={{
-            textMonthFontFamily: 'Urbanist_800ExtraBold',
-            textMonthFontSize: 20,
-            textDayHeaderFontFamily: 'Urbanist_800ExtraBold',
-            textDayFontFamily: 'Urbanist_500Medium',
-          }}
-          onDayPress={day => {
-            setSelected(day.dateString);
-          }}
-          markedDates={{
-            [selected]: {
-              selected: true,
-              disableTouchEvent: true,
-              selectedColor: colors.primaryColor,
-              selectedTextColor: colors.white,
-            },
-          }}
-        />
+        <CalendarComponent selected={selected} setSelected={setSelected} />
         <ToggleBookingCount
           count={workingHours}
           decrementCount={decrementCount}

@@ -5,7 +5,7 @@ import { colors } from '../utils/generalUtils';
 type Props = {
   caption?: string;
   children?: React.ReactNode;
-  action: string;
+  action?: string;
   onPress?: () => void;
 };
 const SectionTitle = ({ children, caption, action, onPress }: Props) => {
@@ -14,11 +14,13 @@ const SectionTitle = ({ children, caption, action, onPress }: Props) => {
       <Text style={[styles.sectionTitleText, styles.sectionTitleCaption]}>
         {caption || children}
       </Text>
-      <TouchableOpacity onPress={onPress}>
-        <Text style={[styles.sectionTitleText, styles.sectionTitleAction]}>
-          {action}
-        </Text>
-      </TouchableOpacity>
+      {action && (
+        <TouchableOpacity onPress={onPress}>
+          <Text style={[styles.sectionTitleText, styles.sectionTitleAction]}>
+            {action}
+          </Text>
+        </TouchableOpacity>
+      )}
     </View>
   );
 };
