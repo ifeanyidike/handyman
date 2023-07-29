@@ -3,8 +3,8 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import { SafeAreaView } from 'react-native-safe-area-context';
 import LogoTitle from '../../components/LogoTitle';
 import { defaultContainer } from '../../utils/general';
-import Chat from './Chat';
-import Calls from './Calls';
+import ChatLog from './ChatLog';
+import CallLog from './CallLog';
 
 const Tab = createMaterialTopTabNavigator();
 const Inbox = () => {
@@ -17,8 +17,8 @@ const Inbox = () => {
             tabBarLabelStyle: styles.navigator,
           }}
         >
-          <Tab.Screen name="Chat" component={Chat} />
-          <Tab.Screen name="Calls" component={Calls} />
+          <Tab.Screen name="Chats" component={ChatLog} />
+          <Tab.Screen name="Calls" component={CallLog} />
         </Tab.Navigator>
       </View>
     </SafeAreaView>

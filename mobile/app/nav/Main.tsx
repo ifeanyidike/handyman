@@ -13,8 +13,9 @@ import CalendarIcon from '../assets/icons/Calendar';
 import ChatIcon from '../assets/icons/Chat';
 import ProfileIcon from '../assets/icons/Profile';
 import { colors } from '../utils/generalUtils';
+import { MainTabParamsList } from '../types/basic';
 
-const Tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator<MainTabParamsList>();
 const Main = () => {
   useExitAppOnBackButton();
   const getIconFillColor = (focused: boolean) => {

@@ -9,11 +9,19 @@ type Props = {
   text: string;
   date: Date;
   numUnread: null | number;
+  navigation: any;
 };
 const ChatCard = (props: Props) => {
-  const { numUnread } = props;
+  const { numUnread, navigation } = props;
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={() =>
+        navigation.navigate('Chat', {
+          receiverName: props.userName,
+        })
+      }
+    >
       <Image source={props.pic} style={styles.img} />
       <View style={styles.content}>
         <Text style={styles.name}>{truncateText(props.userName, 20)}</Text>
