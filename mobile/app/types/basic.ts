@@ -33,6 +33,7 @@ export type RootStackParamsList = {
   };
   BookingDetails: undefined;
   BookingLocation: undefined;
+  Chat: undefined;
 };
 
 export type MainTabParamsList = {
@@ -72,4 +73,15 @@ export enum bookingStatus {
   upcoming = 'Upcoming',
   completed = 'Completed',
   cancelled = 'Cancelled',
+}
+
+export enum CallType {
+  incoming = 'Incoming',
+  outgoing = 'Outgoing',
+  missed = 'Missed',
+}
+
+export enum InboxType {
+  chat = 'Chat',
+  call = 'Call',
 }

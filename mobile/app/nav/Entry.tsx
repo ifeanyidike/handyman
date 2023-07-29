@@ -19,6 +19,7 @@ import Service from '../screens/Service';
 import BookingStart from '../screens/PreBookings/BookingStart';
 import BookingDetails from '../screens/PreBookings/BookingDetails';
 import BookingLocation from '../screens/PreBookings/BookingLocation';
+import Chat from '../screens/Inbox/Chat';
 
 const Stack = createNativeStackNavigator<RootStackParamsList>();
 const Entry = () => {
@@ -49,6 +50,7 @@ const Entry = () => {
         <Stack.Screen name="BookingStart" component={BookingStart} />
         <Stack.Screen name="BookingDetails" component={BookingDetails} />
         <Stack.Screen name="BookingLocation" component={BookingLocation} />
+        <Stack.Screen name="Chat" component={Chat} />
       </Stack.Navigator>
     </NavigationContainer>
   );

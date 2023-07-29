@@ -1,33 +1,31 @@
 import { StyleSheet, View } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import Upcoming from './Upcoming';
-import Completed from './Completed';
-import Cancelled from './Cancelled';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import LogoTitle from '../../components/LogoTitle';
 import { defaultContainer } from '../../utils/general';
+import Chat from './Chat';
+import Calls from './Calls';
 
 const Tab = createMaterialTopTabNavigator();
-const Bookings = () => {
+const Inbox = () => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.container}>
-        <LogoTitle title="My Bookings" />
+        <LogoTitle title="Inbox" />
         <Tab.Navigator
           screenOptions={{
             tabBarLabelStyle: styles.navigator,
           }}
         >
-          <Tab.Screen name="Upcoming" component={Upcoming} />
-          <Tab.Screen name="Completed" component={Completed} />
-          <Tab.Screen name="Cancelled" component={Cancelled} />
+          <Tab.Screen name="Chat" component={Chat} />
+          <Tab.Screen name="Calls" component={Calls} />
         </Tab.Navigator>
       </View>
     </SafeAreaView>
   );
 };
 
-export default Bookings;
+export default Inbox;
 
 const styles = StyleSheet.create({
   container: {

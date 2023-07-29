@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 
-const Inbox = () => {
+const index = () => {
   return (
     <View>
-      <Text>Inbox</Text>
+      <Text>index</Text>
     </View>
   );
 };
 
-export default Inbox;
+export default index;
 
 const styles = StyleSheet.create({});

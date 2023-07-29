@@ -3,7 +3,7 @@ import React from 'react';
 import { colors, testBookings } from '../../utils/generalUtils';
 import { bookingStatus } from '../../types/basic';
 import ListItems from './ListItems';
-const { width, height } = Dimensions.get('window');
+const { height } = Dimensions.get('window');
 
 const Upcoming = () => {
   return (
