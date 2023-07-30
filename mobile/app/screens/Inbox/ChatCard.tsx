@@ -1,7 +1,8 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React from 'react';
-import { getFormattedTime, truncateText } from '../../utils/general';
+import { truncateText } from '../../utils/general';
 import { colors } from '../../utils/generalUtils';
+import { getFormattedTime } from '../../utils/date';
 
 type Props = {
   pic: number;

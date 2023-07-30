@@ -1,12 +1,13 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React from 'react';
-import { getFormattedTime, truncateText } from '../../utils/general';
+import { truncateText } from '../../utils/general';
 import { colors } from '../../utils/generalUtils';
 import { CallType } from '../../types/basic';
 import CallIcon from '../../assets/icons/CallIcon';
 import IncomingCallIcon from '../../assets/icons/IncomingCallIcon';
 import OutgoingCallIcon from '../../assets/icons/OutgoingCallIcon';
 import MissedCallIcon from '../../assets/icons/MissedCallIcon';
+import { getFormattedTime } from '../../utils/date';
 
 type Props = {
   pic: number;

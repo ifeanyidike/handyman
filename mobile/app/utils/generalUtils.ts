@@ -15,6 +15,7 @@ export const colors = {
   nearAsh: '#424242',
   black: '#000000',
   nearBlack: '#222222',
+  textColor: '#212121',
   indicatorLoader: '#00ff00',
   tabMainColor: '#9E9E9E',
   status: '#F75555',
