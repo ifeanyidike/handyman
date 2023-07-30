@@ -2,16 +2,23 @@ import { Dimensions, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import { colors } from '../../../utils/generalUtils';
 import { getTime } from '../../../utils/date';
+import { MessageData, MessageTypeEnum } from '../../../types/basic';
 
 const { width } = Dimensions.get('window');
 
-type Props = {
-  userId: string;
-  text: string;
-  date: Date;
-};
-const Message = (props: Props) => {
+const Message = (props: MessageData) => {
+  const { type } = props;
+
+  if (type === MessageTypeEnum.tag) {
+    return (
+      <View style={styles.tagContainer}>
+        <Text style={styles.tag}>{props.tag}</Text>
+      </View>
+    );
+  }
+
   const { userId, text, date } = props;
+
   return (
     <View
       style={[
@@ -75,5 +82,16 @@ const styles = StyleSheet.create({
   },
   date: {
     fontSize: 12,
+  },
+  tagContainer: {
+    backgroundColor: colors.dim,
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    padding: 10,
+    borderRadius: 10,
+  },
+  tag: {
+    fontFamily: 'Urbanist_400Regular',
+    fontSize: 10,
   },
 });

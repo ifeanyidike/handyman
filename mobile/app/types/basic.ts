@@ -85,3 +85,20 @@ export enum InboxType {
   chat = 'Chat',
   call = 'Call',
 }
+
+export enum MessageTypeEnum {
+  text = 'text',
+  media = 'media',
+  tag = 'tag',
+}
+
+export type MessageType = {
+  userId: string;
+  text: string;
+  date: Date;
+  type: MessageTypeEnum.text | MessageTypeEnum.media;
+};
+
+export type MessageData =
+  | MessageType
+  | { tag: string; type: MessageTypeEnum.tag };

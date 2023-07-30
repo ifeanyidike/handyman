@@ -9,7 +9,8 @@ export const getFormattedTime = (date: Date, locale = 'en-US'): string => {
 
 export function getDateTag(date: Date, locale = 'en-US'): string {
   if (isDateInThisWeek(date)) {
-    return date.toLocaleDateString('en-US', { weekday: 'long' });
+    const weekDate = date.toLocaleDateString('en-US', { weekday: 'long' });
+    return weekDate.split(',')[0];
   }
   let options: Intl.DateTimeFormatOptions = {
     month: 'short',
@@ -61,23 +62,24 @@ export const truncateText = (
   return strArr.join('');
 };
 
-const isDateInThisWeek = (date: Date) => {
-  const today = new Date();
+function getCurrentWeekDates() {
+  const currentDate = new Date();
+  const dayOfWeek = currentDate.getDay(); // 0 (Sunday) to 6 (Saturday)
+  const startOfWeek = new Date(currentDate); // Clone the current date
+  startOfWeek.setDate(startOfWeek.getDate() - dayOfWeek); // Move to the start of the week (Sunday)
+  startOfWeek.setHours(0, 0, 0, 0); // Set time to midnight
 
-  //Get the first day of the current week (Sunday)
-  const firstDayOfWeek = new Date(
-    today.setDate(today.getDate() - today.getDay())
-  );
+  const endOfWeek = new Date(currentDate); // Clone the current date
+  endOfWeek.setDate(endOfWeek.getDate() + (6 - dayOfWeek)); // Move to the end of the week (Saturday)
+  endOfWeek.setHours(23, 59, 59, 999); // Set time to the end of the day
 
-  //Get the last day of the current week (Saturday)
-  const lastDayOfWeek = new Date(
-    today.setDate(today.getDate() - today.getDay() + 6)
-  );
+  return {
+    startOfWeek,
+    endOfWeek,
+  };
+}
 
-  //check if my value is between a minimum date and a maximum date
-  if (date >= firstDayOfWeek && date <= lastDayOfWeek) {
-    return true;
-  } else {
-    return false;
-  }
-};
+function isDateInThisWeek(date: Date) {
+  const { startOfWeek, endOfWeek } = getCurrentWeekDates();
+  return date >= startOfWeek && date <= endOfWeek;
+}
