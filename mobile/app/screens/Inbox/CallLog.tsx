@@ -25,7 +25,6 @@ const ChatLog = () => {
               />
             )}
             snapToAlignment="center"
-            showsVerticalScrollIndicator={true}
             style={{ flex: 1 }}
           />
         </>

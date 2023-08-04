@@ -94,11 +94,23 @@ export enum MessageTypeEnum {
 
 export type MessageType = {
   userId: string;
-  text: string;
+  text?: string;
   date: Date;
+  mediaUrls?: string[];
   type: MessageTypeEnum.text | MessageTypeEnum.media;
 };
 
 export type MessageData =
   | MessageType
   | { tag: string; type: MessageTypeEnum.tag };
+
+export type FileType = {
+  type: 'success';
+  name: string;
+  size?: number | undefined;
+  uri: string;
+  mimeType?: string | undefined;
+  lastModified?: number | undefined;
+  file?: File | undefined;
+  output?: FileList | null | undefined;
+};

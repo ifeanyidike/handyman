@@ -34,7 +34,6 @@ const ChatLog = (props: Props) => {
               />
             )}
             snapToAlignment="center"
-            showsVerticalScrollIndicator={true}
             style={{ flex: 1 }}
           />
         </>

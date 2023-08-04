@@ -12,7 +12,7 @@ const useOrganizeMessageData = (messageData: MessageType[]) => {
     // Step 2: Loop through the message data array
     messageData.forEach(message => {
       const date = getDateTag(message.date);
-      console.log('date', date);
+
       if (!messagesByDate[date]) {
         messagesByDate[date] = [];
       }

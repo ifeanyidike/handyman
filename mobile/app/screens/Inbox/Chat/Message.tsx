@@ -1,5 +1,12 @@
-import { Dimensions, StyleSheet, Text, View } from 'react-native';
-import React from 'react';
+import {
+  Dimensions,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import React, { useState } from 'react';
 import { colors } from '../../../utils/generalUtils';
 import { getTime } from '../../../utils/date';
 import { MessageData, MessageTypeEnum } from '../../../types/basic';
@@ -8,6 +15,7 @@ const { width } = Dimensions.get('window');
 
 const Message = (props: MessageData) => {
   const { type } = props;
+  const [expandImage, setExpandImage] = useState(false);
 
   if (type === MessageTypeEnum.tag) {
     return (
@@ -17,33 +25,67 @@ const Message = (props: MessageData) => {
     );
   }
 
-  const { userId, text, date } = props;
+  const { userId, text, date, mediaUrls } = props;
 
   return (
-    <View
-      style={[
-        styles.commonContainer,
-        userId === 'me' ? styles.userContainer : styles.receiverContainer,
-      ]}
-    >
-      <Text
-        style={[
-          styles.commonText,
-          userId === 'me' ? styles.userText : styles.receiverText,
-        ]}
-      >
-        {text}
-      </Text>
-      <Text
-        style={[
-          styles.commonText,
-          styles.date,
-          userId === 'me' ? styles.userText : styles.receiverText,
-        ]}
-      >
-        {getTime(date, ':')}
-      </Text>
-    </View>
+    <>
+      {type === MessageTypeEnum.text ? (
+        <View
+          style={[
+            styles.commonContainer,
+            userId === 'me' ? styles.userContainer : styles.receiverContainer,
+          ]}
+        >
+          <>
+            <Text
+              style={[
+                styles.commonText,
+                userId === 'me' ? styles.userText : styles.receiverText,
+              ]}
+            >
+              {text}
+            </Text>
+            <Text
+              style={[
+                styles.commonText,
+                styles.date,
+                userId === 'me' ? styles.userText : styles.receiverText,
+              ]}
+            >
+              {getTime(date, ':')}
+            </Text>
+          </>
+        </View>
+      ) : (
+        <View
+          style={[
+            styles.commonContainer,
+            userId === 'me' ? styles.userContainer : styles.receiverContainer,
+            styles.assets,
+            expandImage && { flexDirection: 'column' },
+          ]}
+        >
+          {mediaUrls?.map((uri, key) => (
+            <TouchableOpacity
+              key={key}
+              onPress={() => setExpandImage(!expandImage)}
+            >
+              <Image
+                source={{ uri }}
+                style={[
+                  styles.asset,
+                  expandImage && {
+                    width,
+                    height: 500,
+                  },
+                ]}
+                resizeMode="contain"
+              />
+            </TouchableOpacity>
+          ))}
+        </View>
+      )}
+    </>
   );
 };
 
@@ -93,5 +135,13 @@ const styles = StyleSheet.create({
   tag: {
     fontFamily: 'Urbanist_400Regular',
     fontSize: 10,
+  },
+  assets: {
+    flexDirection: 'row',
+    backgroundColor: 'transparent',
+  },
+  asset: {
+    width: 200,
+    height: 200,
   },
 });
