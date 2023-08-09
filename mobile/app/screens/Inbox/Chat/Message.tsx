@@ -11,7 +11,7 @@ import { colors } from '../../../utils/generalUtils';
 import { getTime } from '../../../utils/date';
 import { MessageData, MessageTypeEnum } from '../../../types/basic';
 
-const { width } = Dimensions.get('window');
+const { width, height } = Dimensions.get('window');
 
 const Message = (props: MessageData) => {
   const { type } = props;
@@ -76,10 +76,9 @@ const Message = (props: MessageData) => {
                   styles.asset,
                   expandImage && {
                     width,
-                    height: 500,
                   },
                 ]}
-                resizeMode="contain"
+                resizeMode={expandImage ? 'contain' : 'stretch'}
               />
             </TouchableOpacity>
           ))}

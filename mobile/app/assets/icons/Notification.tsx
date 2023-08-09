@@ -5,14 +5,16 @@ import Svg, { Path } from 'react-native-svg';
 type Props = {
   strokeColor?: string;
   fillColor?: string;
+  size?: string;
 };
 const Notification = ({
   strokeColor = '#212121',
   fillColor = 'none',
+  size = '28',
 }: Props) => {
   return (
     <View style={styles.container}>
-      <Svg width="28" height="28" viewBox="0 0 28 28" fill={fillColor}>
+      <Svg width={size} height={size} viewBox="0 0 28 28" fill={fillColor}>
         <Path
           fillRule="evenodd"
           clipRule="evenodd"

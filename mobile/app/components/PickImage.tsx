@@ -1,15 +1,14 @@
-import {
-  Image,
-  Pressable,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import { Image, StyleSheet, TouchableOpacity, View } from 'react-native';
 import React, { useState } from 'react';
 import * as ImagePicker from 'expo-image-picker';
+import EditSquare from '../assets/icons/EditSquare';
 
-const PickImage = () => {
+type Props = {
+  defaultImage?: number;
+  size?: number;
+};
+const PickImage = (props: Props) => {
+  const { defaultImage = require('../assets/Ellipse.png'), size = 150 } = props;
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const handlePress = async () => {
@@ -25,17 +24,14 @@ const PickImage = () => {
     setSelectedImage(uri);
   };
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { width: size, height: size }]}>
       <Image
-        source={
-          selectedImage
-            ? { uri: selectedImage }
-            : require('../assets/Ellipse.png')
-        }
+        source={selectedImage ? { uri: selectedImage } : defaultImage}
         style={styles.userImage}
+        resizeMode="cover"
       />
       <TouchableOpacity onPress={handlePress} style={styles.edit}>
-        <Image source={require('../assets/icons/EditSquare.png')} />
+        <EditSquare size={25} />
       </TouchableOpacity>
     </View>
   );
@@ -45,8 +41,6 @@ export default PickImage;
 
 const styles = StyleSheet.create({
   container: {
-    width: 150,
-    height: 150,
     marginLeft: 'auto',
     marginRight: 'auto',
     borderRadius: 9999,

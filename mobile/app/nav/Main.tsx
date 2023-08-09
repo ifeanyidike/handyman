@@ -6,7 +6,7 @@ import Home from '../screens/Home';
 import Bookings from '../screens/Bookings';
 import Calendar from '../screens/Calendar';
 import Inbox from '../screens/Inbox';
-import UserProfile from '../screens/UserProfile';
+import UserProfile from '../screens/UserProfile/';
 import HomeIcon from '../assets/icons/Home';
 import DocumentIcon from '../assets/icons/Document';
 import CalendarIcon from '../assets/icons/Calendar';

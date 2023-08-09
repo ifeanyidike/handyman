@@ -1,14 +1,22 @@
 import { StyleSheet, View } from 'react-native';
 import React from 'react';
 import Svg, { Path } from 'react-native-svg';
+import { colors } from '../../utils/generalUtils';
 
 type Props = {
-  fillColor: string;
+  fillColor?: string;
+  width?: string;
+  height?: string;
 };
-const Profile = ({ fillColor = '#9E9E9E' }: Props) => {
+const Profile = (props: Props) => {
+  const {
+    fillColor = colors.tabMainColor,
+    width = '25',
+    height = '24',
+  } = props;
   return (
     <View style={styles.container}>
-      <Svg width="25" height="24" viewBox="0 0 25 24" fill="none">
+      <Svg width={width} height={height} viewBox="0 0 25 24" fill="none">
         <Path
           fillRule="evenodd"
           clipRule="evenodd"
