@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React, { ReactNode } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { defaultContainer } from '../../utils/general';
@@ -85,7 +85,11 @@ const Item = ({
   textRight,
   textColor,
   hideIconRight,
-  IconRight = <ArrowRight />,
+  IconRight = (
+    <TouchableOpacity>
+      <ArrowRight />
+    </TouchableOpacity>
+  ),
 }: ItemType) => (
   <View style={styles.content}>
     <View style={styles.iconLeft}>{children}</View>
