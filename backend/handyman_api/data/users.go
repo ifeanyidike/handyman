@@ -67,8 +67,8 @@ func (u *User) UpdateUserProfile(r *http.Request) (User, error) {
 	return updatedUser, nil
 }
 
-func (u *User) GetUser(filter primitive.D, r *http.Request) error{
-	ctx, cancel := context.WithTimeout(r.Context(), 3 * time.Second)
+func (u *User) GetUser(filter primitive.D, r *http.Request) error {
+	ctx, cancel := context.WithTimeout(r.Context(), 3*time.Second)
 	defer cancel()
 	if err := db.DB.Collection("users").FindOne(ctx, filter).Decode(&u); err != nil {
 		return err
@@ -76,7 +76,7 @@ func (u *User) GetUser(filter primitive.D, r *http.Request) error{
 	return nil
 }
 
-func (u *User) GetUserByID(r *http.Request) (error) {
+func (u *User) GetUserByID(r *http.Request) error {
 	vars := mux.Vars(r)
 	id, err := primitive.ObjectIDFromHex(vars["id"])
 	if err != nil {
@@ -84,7 +84,7 @@ func (u *User) GetUserByID(r *http.Request) (error) {
 	}
 	filter := bson.D{
 		{
-			Key: "_id",
+			Key:   "_id",
 			Value: id,
 		},
 	}
@@ -95,11 +95,11 @@ func (u *User) GetUserByID(r *http.Request) (error) {
 	return nil
 }
 
-func (u *User) GetUserByEmail(r *http.Request) (error) {
+func (u *User) GetUserByEmail(r *http.Request) error {
 	vars := mux.Vars(r)
 	filter := bson.D{
 		{
-			Key: "email",
+			Key:   "email",
 			Value: vars["email"],
 		},
 	}
@@ -110,11 +110,11 @@ func (u *User) GetUserByEmail(r *http.Request) (error) {
 	return nil
 }
 
-func (u *User) GetUserByUsername(r *http.Request) (error) {
+func (u *User) GetUserByUsername(r *http.Request) error {
 	vars := mux.Vars(r)
 	filter := bson.D{
 		{
-			Key: "username",
+			Key:   "username",
 			Value: vars["username"],
 		},
 	}
